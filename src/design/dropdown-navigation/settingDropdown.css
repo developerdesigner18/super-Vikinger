@@ -1,0 +1,44 @@
+.dropdown-navigation-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.profileInfoHolder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  text-align: left;
+}
+.profileInfoHolder p {
+  color: #616a82;
+  margin: 0px;
+  font-size: 10px;
+  padding: 0px 10px;
+  font-family: RajdhaniBold;
+  text-align: left;
+}
+.dropdown-navigation-category {
+  margin: 20px 0 10px;
+  font-size: 12px;
+  font-family: RajdhaniBold;
+  color: #616a82;
+  text-transform: uppercase;
+}
+.dropdown-navigation-link {
+  display: block;
+  padding: 6px 0;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: "RajdhaniBold";
+  transition: padding 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+.dropdown-navigation-link:hover {
+  padding-left: 4px;
+  color: #40d04f;
+}
+.dropdown-navigation-link:focus {
+  float: right;
+  color: black;
+}
