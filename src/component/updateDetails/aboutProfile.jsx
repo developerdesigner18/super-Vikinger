@@ -1,0 +1,426 @@
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
+import React, { useState } from "react";
+
+import "../../design/UpdatePersonalnfo/aboutProfile.css";
+const AboutProfile = ({
+  fullName,
+  setFullName,
+  accountEmail,
+  setAccountEmail,
+  urlUserName,
+  setUrlUserName,
+  phoneNumber,
+  setPhoneNumber,
+  setAccountCountry,
+  accountCountry,
+  language,
+  setLanguage,
+  recoveryEmail,
+  setRecoveryEmail,
+  recoveryPhone,
+  setrecoveryPhone,
+  setaboutApi,
+}) => {
+  const [fullNameError, setFullNameError] = useState(false);
+  const [accountEmailError, setAccountEmailError] = useState(false);
+  const [urlUserNameError, setUrlUserNameError] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
+  const [recoveryEmailError, setRecoveryEmailError] = useState(false);
+  const [recoveryPhoneError, setRecoveryPhoneError] = useState(false);
+  setaboutApi(true);
+  return (
+    <React.Fragment>
+      <p style={{ fontSize: 12, textTransform: "uppercase", color: "#616a82" }}>
+        Account
+      </p>
+      <h1>Account Info</h1>
+      <div className="accountPersonalInfoHolder">
+        <p style={{ marginBottom: 10 }}>Personal Info</p>
+        <form>
+          <div className="fieldHolder">
+            <div className="rowOne">
+              <TextField
+                id="outlined-Fullname-input"
+                label="Full Name"
+                type="text"
+                sx={{ width: 450 }}
+                error={fullNameError}
+                value={fullName}
+                autoComplete="off"
+                onChange={(e) => {
+                  setFullName(e.target.value);
+                  if (e.target.value === "") {
+                    setFullNameError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setFullNameError(false);
+                  }
+                }}
+                onBlur={(e) => {
+                  setFullName(e.target.value);
+                  if (e.target.value === "") {
+                    setFullNameError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setFullNameError(false);
+                  }
+                }}
+                helperText={fullNameError ? "Please Enter Your Full-Name" : ""}
+                InputProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "#616a82",
+                  },
+                }}
+              />
+              <TextField
+                id="outlined-AccountEmail-input"
+                label="Account Email"
+                type="text"
+                sx={{ width: 450 }}
+                error={accountEmailError}
+                value={accountEmail}
+                autoComplete="off"
+                onChange={(e) => {
+                  setAccountEmail(e.target.value);
+                  if (e.target.value === "") {
+                    setAccountEmailError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setAccountEmailError(false);
+                  }
+                }}
+                onBlur={(e) => {
+                  setAccountEmail(e.target.value);
+                  if (e.target.value === "") {
+                    setAccountEmailError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setAccountEmailError(false);
+                  }
+                }}
+                helperText={
+                  accountEmailError ? "Please Enter Your Account Email" : ""
+                }
+                InputProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "#616a82",
+                  },
+                }}
+              />
+            </div>
+            <div className="rowTwo">
+              <TextField
+                id="outlined-urlUserName-input"
+                label="URL Username:www.vikinger.com/"
+                type="text"
+                sx={{ width: 450 }}
+                error={urlUserNameError}
+                value={urlUserName}
+                autoComplete="off"
+                onChange={(e) => {
+                  setUrlUserName(e.target.value);
+                  if (e.target.value === "") {
+                    setUrlUserNameError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setUrlUserNameError(false);
+                  }
+                }}
+                onBlur={(e) => {
+                  setUrlUserName(e.target.value);
+                  if (e.target.value === "") {
+                    setUrlUserNameError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setUrlUserNameError(false);
+                  }
+                }}
+                helperText={
+                  urlUserNameError ? "Please Enter Your URL UserName" : ""
+                }
+                InputProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "#616a82",
+                  },
+                }}
+              />
+              <TextField
+                id="outlined-phoneNumber-input"
+                label="Phone Number"
+                type="number"
+                sx={{ width: 450 }}
+                error={phoneNumberError}
+                value={phoneNumber}
+                autoComplete="off"
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                  if (e.target.value === "") {
+                    setPhoneNumberError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setPhoneNumberError(false);
+                  }
+                }}
+                onBlur={(e) => {
+                  setPhoneNumber(e.target.value);
+                  if (e.target.value === "") {
+                    setPhoneNumberError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setPhoneNumberError(false);
+                  }
+                }}
+                helperText={
+                  phoneNumberError ? "Please Enter Your Phone-Number" : ""
+                }
+                InputProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "#616a82",
+                  },
+                }}
+              />
+            </div>
+            <div className="rowThree">
+              <FormControl sx={{ width: 450, borderRadius: 18 }}>
+                <InputLabel
+                  sx={{ color: "#616a82", fontFamily: "RajdhaniBold" }}
+                  id="demo-Accountcountry-label"
+                >
+                  Country
+                </InputLabel>
+                <Select
+                  labelId="demo-Accountcountry-label"
+                  id="demo-Accountcountry"
+                  value={accountCountry}
+                  label="Country"
+                  sx={{ color: "white", fontFamily: "RajdhaniBold" }}
+                  onChange={(e) => {
+                    setAccountCountry(e.target.value);
+                  }}
+                >
+                  <MenuItem selected value="India">
+                    India
+                  </MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl sx={{ width: 450, borderRadius: 18 }}>
+                <InputLabel
+                  sx={{ color: "#616a82", fontFamily: "RajdhaniBold" }}
+                  id="demo-language-label"
+                >
+                  Language
+                </InputLabel>
+                <Select
+                  labelId="demo-language-label"
+                  id="demo-language"
+                  value={language}
+                  label="Language"
+                  sx={{ color: "white", fontFamily: "RajdhaniBold" }}
+                  onChange={(e) => {
+                    setLanguage(e.target.value);
+                  }}
+                >
+                  <MenuItem selected value="Gujarati">
+                    Gujarati
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div className="securityInfo">
+        <p style={{ marginBottom: 15 }}>Security Info</p>
+        <form>
+          <div className="securityFieldHolder">
+            <div className="rowOne">
+              {" "}
+              <TextField
+                id="outlined-RecoveryEmail-input"
+                label="Recovery Email"
+                type="email"
+                sx={{ width: 450 }}
+                error={recoveryEmailError}
+                value={recoveryEmail}
+                autoComplete="off"
+                onChange={(e) => {
+                  setRecoveryEmail(e.target.value);
+                  if (e.target.value === "") {
+                    setRecoveryEmailError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setRecoveryEmailError(false);
+                  }
+                }}
+                onBlur={(e) => {
+                  setRecoveryEmail(e.target.value);
+                  if (e.target.value === "") {
+                    setRecoveryEmailError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setRecoveryEmailError(false);
+                  }
+                }}
+                helperText={
+                  recoveryEmailError ? "Please Enter Your Recovery-Email!" : ""
+                }
+                InputProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "#616a82",
+                  },
+                }}
+              />{" "}
+              <TextField
+                id="outlined-RecoveryPhone-input"
+                label="Recovery Phone"
+                type="number"
+                sx={{ width: 450 }}
+                error={recoveryPhoneError}
+                value={recoveryPhone}
+                autoComplete="off"
+                onChange={(e) => {
+                  setrecoveryPhone(e.target.value);
+                  if (e.target.value === "") {
+                    setRecoveryPhoneError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setRecoveryPhoneError(false);
+                  }
+                }}
+                onBlur={(e) => {
+                  setrecoveryPhone(e.target.value);
+                  if (e.target.value === "") {
+                    setRecoveryPhoneError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setRecoveryPhoneError(false);
+                  }
+                }}
+                helperText={
+                  recoveryPhoneError
+                    ? "Please Enter Your Recovery Phone-Number"
+                    : ""
+                }
+                InputProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "#616a82",
+                  },
+                }}
+              />
+            </div>
+            <div className="rowTwo">
+              <FormControl sx={{ width: 450, borderRadius: 18 }}>
+                <InputLabel
+                  sx={{ color: "#616a82", fontFamily: "RajdhaniBold" }}
+                  id="demo-language-label"
+                >
+                  Language
+                </InputLabel>
+                <Select
+                  labelId="demo-language-label"
+                  id="demo-language"
+                  value={language}
+                  label="Language"
+                  sx={{ color: "white", fontFamily: "RajdhaniBold" }}
+                  onChange={(e) => {
+                    setLanguage(e.target.value);
+                  }}
+                >
+                  <MenuItem selected value="Gujarati">
+                    Gujarati
+                  </MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl sx={{ width: 450, borderRadius: 18 }}>
+                <InputLabel
+                  sx={{ color: "#616a82", fontFamily: "RajdhaniBold" }}
+                  id="demo-language-label"
+                >
+                  Language
+                </InputLabel>
+                <Select
+                  labelId="demo-language-label"
+                  id="demo-language"
+                  value={language}
+                  label="Language"
+                  sx={{ color: "white", fontFamily: "RajdhaniBold" }}
+                  onChange={(e) => {
+                    setLanguage(e.target.value);
+                  }}
+                >
+                  <MenuItem selected value="Gujarati">
+                    Gujarati
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="rowThree"></div>
+            <div className="rowFour"></div>
+          </div>
+        </form>
+      </div>
+    </React.Fragment>
+  );
+};
+
+export default AboutProfile;

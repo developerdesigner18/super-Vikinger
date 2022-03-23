@@ -76,43 +76,43 @@ const SignupPage = () => {
 
   const handleSubmit = (event) => {
     if (pwd === repeatPwd) {
-      navigate("/homePage");
-      // if (email && userName && pwd && repeatPwd && notificationOn) {
-      //   const profileData = {
-      //     email: email,
-      //     userName: userName,
-      //     password: pwd,
-      //     repeatPassword: repeatPwd,
-      //     notificationOn: notificationOn,
-      //   };
-      //   console.log(profileData);
-      //   axios({
-      //     method: "post",
-      //     url: "http://localhost:8080/user/register",
-      //     data: profileData,
-      //   })
-      //     .then(function (response) {
-      //       //handle success
-      //       if (response.status === 200) {
-      //         toast.success("success!");
-      //       }
-      //       console.log(response);
-      //       setEmail("");
-      //       setPwd("");
-      //       setUserName("");
-      //       setRepeatPwd("");
-      //       // setTimeout(() => {
-      //       //   navigate("/homepage");
-      //       // }, 5000);
-      //     })
-      //     .catch((err) => {
-      //       //handle error
-      //       // if (response.status !== 200) {
-      //       console.log("err : ", err.response.data);
-      //       toast.error(err.response.data.message);
-      //       // }
-      //     });
-      // }
+      if (email && userName && pwd && repeatPwd && notificationOn) {
+        const profileData = {
+          email: email,
+          userName: userName,
+          password: pwd,
+          repeatPassword: repeatPwd,
+          notificationOn: notificationOn,
+        };
+        console.log(profileData);
+        axios({
+          method: "post",
+          url: "http://localhost:8080/user/Register",
+          data: profileData,
+        })
+          .then(function (response) {
+            //handle success
+            if (response.status === 200) {
+              toast.success("success!");
+              setAlignment("login");
+            }
+            console.log(response);
+            setEmail("");
+            setPwd("");
+            setUserName("");
+            setRepeatPwd("");
+            // setTimeout(() => {
+            //   navigate("/homepage");
+            // }, 5000);
+          })
+          .catch((err) => {
+            //handle error
+            // if (response.status !== 200) {
+            console.log("err : ", err.response.data);
+            toast.error(err.response.data.message);
+            // }
+          });
+      }
     } else {
       setRepeatPwdError(true);
     }
@@ -122,23 +122,21 @@ const SignupPage = () => {
     console.log("click");
     event.preventDefault();
     if (emailUserName && pwdLogin && rememberMe) {
-      navigate("/homepage");
-
       const loginData = {
         email: emailUserName,
         password: pwdLogin,
       };
-      // axios
-      //   .post("http://localhost:8080/user/login", loginData)
-      //   .then((response) => {
-      //     console.log("loginResponse----------------->", response.data.token);
-      //     localStorage.setItem("Token", JSON.stringify(response.data.token));
-      //     navigate("/homepage");
-      //   })
-      //   .catch((err) => {
-      //     console.log("err : ", err.response.data);
-      //     toast.error(err.response.data.message);
-      //   });
+      axios
+        .post("http://localhost:8080/user/Login", loginData)
+        .then((response) => {
+          console.log("loginResponse----------------->", response.data.token);
+          localStorage.setItem("Token", JSON.stringify(response.data.token));
+          navigate("/homepage");
+        })
+        .catch((err) => {
+          console.log("err : ", err.response.data);
+          toast.error(err.response.data.message);
+        });
     } else {
       alert("Please fill the form details properly!");
     }

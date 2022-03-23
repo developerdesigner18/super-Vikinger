@@ -1,7 +1,10 @@
 import React from "react";
 import { Button, Image } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "../design/dropdown-navigation/settingDropdown.css";
+
 const SettingDropdown = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="dropdownSetting">
@@ -20,7 +23,12 @@ const SettingDropdown = () => {
         </div>
         <p className="dropdown-navigation-category">My Profile</p>
         <div className="linkHolder">
-          <a href="hub-Profile" className="dropdown-navigation-link">
+          <a
+            onClick={() => {
+              navigate("/updateInfo/profileInfo");
+            }}
+            className="dropdown-navigation-link"
+          >
             Profile Info
           </a>
           <a href="hub-Profile" className="dropdown-navigation-link">
@@ -38,7 +46,12 @@ const SettingDropdown = () => {
         </div>
         <p className="dropdown-navigation-category">Account</p>
         <div className="linkHolder">
-          <a href="hub-Profile" className="dropdown-navigation-link">
+          <a
+            onClick={() => {
+              navigate("/updateInfo/aboutInfo");
+            }}
+            className="dropdown-navigation-link"
+          >
             Account Info
           </a>
           <a href="hub-Profile" className="dropdown-navigation-link">

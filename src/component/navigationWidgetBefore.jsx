@@ -14,8 +14,8 @@ import DateRangeOutlinedIcon from "@mui/icons-material/DateRangeOutlined";
 import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 import AddBusinessIcon from "@mui/icons-material/AddBusiness";
 import { makeStyles } from "@mui/styles";
-import "../design/navigation-widget/navigationWidget.scss";
-import { Image } from "react-bootstrap";
+import "../design/navigation-widget/navigationWidgetBefore.scss";
+import { Image, Button } from "react-bootstrap";
 import { IconButton } from "@mui/material";
 const drawerWidth = 300;
 const useStyles = makeStyles({
@@ -50,55 +50,54 @@ const DrawerWidgetBefore = ({
         open={draweropen}
       >
         <DrawerHeader>
-          <div className="drawerBackground">
-            <Image
-              src="./Image/Drawer/drawerAvatar.png"
-              style={{ width: 120, height: 131, zIndex: 1, marginTop: 23 }}
-            />
-            <p style={{ fontSize: 18 }}>Marina Valentine</p>
-            <p
-              className="playerLink"
-              style={{ fontSize: 11, color: "#9aa4bf" }}
-            >
-              WWW.GAMEHUNTRESS.COM
-            </p>
-            <div className="badgeHolder" style={{ margin: "36px auto 44px" }}>
-              <Image src="./Image/Badge/gold-s.png" />
-              <Image src="./Image/Badge/age-s.png" />
-              <Image src="./Image/Badge/caffeinated-s.png" />
-              <Image src="./Image/Badge/warrior-s.png" />
-              <Image src="./Image/Badge/blank-s.png" />
-            </div>
-            <div className="profileInfo">
-              <div className="infoOne">
-                930 <br />
-                <span style={{ fontSize: 12, color: "#9AA4BF" }}>POSTS</span>
-              </div>{" "}
-              <Divider
-                orientation="vertical"
-                flexItem
-                sx={{ bgcolor: "white", height: 20, margin: "auto 0px" }}
-              />
-              <div className="infoTwo">
-                82 <br />
-                <span style={{ fontSize: 12, color: "#9AA4BF" }}>FRIENDS</span>
-              </div>{" "}
-              <Divider
-                orientation="vertical"
-                flexItem
-                sx={{ bgcolor: "white", height: 20, margin: "auto 0px" }}
-              />
-              <div className="infoThree">
-                5.7K <br />
-                <span style={{ fontSize: 12, color: "#9AA4BF" }}>VISTIS</span>
+          <div className="drawerBackgroundBefore">
+            <div className="beforeDrawerHeaderHolder">
+              <div className="BeforeDrwaerHeader">
+                <div className="icon1 hex" style={{ padding: 0 }}>
+                  <div className="hex-background">
+                    <Image className="icons" src="./Image/Avatar/17.jpg" />
+                  </div>
+                </div>
+                <div className="beforeProfileHeaderText">
+                  <p
+                    style={{
+                      fontSize: 18,
+                      fontFamily: "RajdhaniBold",
+                      color: "white",
+                      margin: "auto 0px",
+                    }}
+                  >
+                    WELCOME
+                  </p>
+                  <p
+                    style={{
+                      fontSize: 12,
+                      color: "#9aa4bf",
+                      fontFamily: "RajdhaniBold",
+                      margin: "auto 0px",
+                    }}
+                  >
+                    Please Register Or Login To Get Your Profile
+                  </p>
+                </div>
               </div>
+              <Button className="drawerLoginBtn">Login & Register</Button>
             </div>
+
             <div className="widgets">
-              <ul
-                className="menu"
-                style={{ marginTop: 46, paddingBottom: 100, paddingLeft: 20 }}
-              >
-                <li className="menu-item">
+              <ul className="menu" style={{ marginTop: 46, paddingLeft: 0 }}>
+                <p
+                  style={{
+                    textAlign: "left",
+                    paddingLeft: 20,
+                    color: "#9aa4bf",
+                    fontSize: 16,
+                    fontFamily: "RajdhaniBold",
+                  }}
+                >
+                  Sections
+                </p>
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
                   <a href="" className="menu-item-link">
                     <IconButton
                       className="menu-item-link-icon"
@@ -112,7 +111,7 @@ const DrawerWidgetBefore = ({
                     Newsfeed
                   </a>
                 </li>
-                <li className="menu-item">
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
                   <a href="" className="menu-item-link">
                     <IconButton
                       className="menu-item-link-icon"
@@ -126,7 +125,7 @@ const DrawerWidgetBefore = ({
                     Overview
                   </a>
                 </li>
-                <li className="menu-item">
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
                   <a href="" className="menu-item-link">
                     <IconButton
                       className="menu-item-link-icon"
@@ -140,7 +139,7 @@ const DrawerWidgetBefore = ({
                     Groups
                   </a>
                 </li>
-                <li className="menu-item">
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
                   <a href="" className="menu-item-link">
                     <IconButton
                       className="menu-item-link-icon"
@@ -154,7 +153,7 @@ const DrawerWidgetBefore = ({
                     Members
                   </a>
                 </li>
-                <li className="menu-item">
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
                   <a href="" className="menu-item-link">
                     <IconButton
                       className="menu-item-link-icon"
@@ -168,7 +167,7 @@ const DrawerWidgetBefore = ({
                     Badges
                   </a>
                 </li>
-                <li className="menu-item">
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
                   <a href="" className="menu-item-link">
                     <IconButton
                       className="menu-item-link-icon"
@@ -182,7 +181,7 @@ const DrawerWidgetBefore = ({
                     Quests
                   </a>
                 </li>
-                <li className="menu-item">
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
                   <a href="" className="menu-item-link">
                     <IconButton
                       className="menu-item-link-icon"
@@ -196,7 +195,7 @@ const DrawerWidgetBefore = ({
                     Streams
                   </a>
                 </li>
-                <li className="menu-item">
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
                   <a href="" className="menu-item-link">
                     <IconButton
                       className="menu-item-link-icon"
@@ -210,7 +209,7 @@ const DrawerWidgetBefore = ({
                     Events
                   </a>
                 </li>
-                <li className="menu-item">
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
                   <a href="" className="menu-item-link">
                     <IconButton
                       className="menu-item-link-icon"
@@ -224,7 +223,7 @@ const DrawerWidgetBefore = ({
                     Forums
                   </a>
                 </li>
-                <li className="menu-item">
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
                   <a href="" className="menu-item-link">
                     <IconButton
                       className="menu-item-link-icon"
@@ -236,6 +235,85 @@ const DrawerWidgetBefore = ({
                       <AddBusinessIcon />
                     </IconButton>
                     Marketplace
+                  </a>
+                </li>
+              </ul>
+              <ul
+                className="menu"
+                style={{ marginTop: 46, paddingBottom: 100, paddingLeft: 0 }}
+              >
+                <p
+                  style={{
+                    textAlign: "left",
+                    paddingLeft: 20,
+                    color: "#9aa4bf",
+                    fontSize: 16,
+                    fontFamily: "RajdhaniBold",
+                  }}
+                >
+                  MAIN LINKS
+                </p>
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
+                  <a
+                    href=""
+                    className="menu-item-link"
+                    style={{ paddingLeft: 20, margin: "5px auto" }}
+                  >
+                    Home
+                  </a>
+                </li>
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
+                  <a
+                    href=""
+                    className="menu-item-link"
+                    style={{ paddingLeft: 20, margin: "5px auto" }}
+                  >
+                    Careers
+                  </a>
+                </li>
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
+                  <a
+                    href=""
+                    className="menu-item-link"
+                    style={{ paddingLeft: 20, margin: "5px auto" }}
+                  >
+                    Faqs
+                  </a>
+                </li>
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
+                  <a
+                    href=""
+                    className="menu-item-link"
+                    style={{ paddingLeft: 20, margin: "5px auto" }}
+                  >
+                    About Us
+                  </a>
+                </li>
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
+                  <a
+                    href=""
+                    className="menu-item-link"
+                    style={{ paddingLeft: 20, margin: "5px auto" }}
+                  >
+                    Our Blog
+                  </a>
+                </li>
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
+                  <a
+                    href=""
+                    className="menu-item-link"
+                    style={{ paddingLeft: 20, margin: "5px auto" }}
+                  >
+                    Contact Us
+                  </a>
+                </li>
+                <li className="menu-item" style={{ paddingLeft: 4 }}>
+                  <a
+                    href=""
+                    className="menu-item-link"
+                    style={{ paddingLeft: 20, margin: "5px auto" }}
+                  >
+                    Privacy Policy
                   </a>
                 </li>
               </ul>

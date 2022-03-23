@@ -22,6 +22,7 @@ const HomePage = () => {
         <HomePageMainCard />
         <RightPanel />
       </div>
+      <Outlet />
     </React.Fragment>
   );
 };
