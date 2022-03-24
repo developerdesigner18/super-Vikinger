@@ -25,7 +25,18 @@ const AboutProfile = ({
   setRecoveryEmail,
   recoveryPhone,
   setrecoveryPhone,
-  setaboutApi,
+  questionOne,
+  setquestionOne,
+  questionTwo,
+  setquestionTwo,
+  questionThree,
+  setquestionThree,
+  recoveryQuestionOne,
+  recoveryAnswerTwo,
+  recoveryAnswerThree,
+  setrecoveryAnswerOne,
+  setrecoveryAnswerTwo,
+  setrecoveryAnswerThree,
 }) => {
   const [fullNameError, setFullNameError] = useState(false);
   const [accountEmailError, setAccountEmailError] = useState(false);
@@ -33,7 +44,13 @@ const AboutProfile = ({
   const [phoneNumberError, setPhoneNumberError] = useState(false);
   const [recoveryEmailError, setRecoveryEmailError] = useState(false);
   const [recoveryPhoneError, setRecoveryPhoneError] = useState(false);
-  setaboutApi(true);
+  const [recoveryQuestionOneError, setRecoveryQuestionOneError] =
+    useState(false);
+  const [recoveryQuestionTwoError, setRecoveryQuestionTwoError] =
+    useState(false);
+  const [recoveryQuestionThreeError, setRecoveryQuestionThreeError] =
+    useState(false);
+
   return (
     <React.Fragment>
       <p style={{ fontSize: 12, textTransform: "uppercase", color: "#616a82" }}>
@@ -372,50 +389,214 @@ const AboutProfile = ({
               <FormControl sx={{ width: 450, borderRadius: 18 }}>
                 <InputLabel
                   sx={{ color: "#616a82", fontFamily: "RajdhaniBold" }}
-                  id="demo-language-label"
+                  id="demo-questionOne-label"
                 >
-                  Language
+                  Security Question 01
                 </InputLabel>
                 <Select
-                  labelId="demo-language-label"
-                  id="demo-language"
-                  value={language}
-                  label="Language"
+                  labelId="demo-questionOne-label"
+                  id="demo-questionOne"
+                  value={questionOne}
+                  label="Security Question 01"
                   sx={{ color: "white", fontFamily: "RajdhaniBold" }}
                   onChange={(e) => {
-                    setLanguage(e.target.value);
+                    setquestionOne(e.target.value);
                   }}
                 >
-                  <MenuItem selected value="Gujarati">
-                    Gujarati
+                  <MenuItem selected value="What's your favourite food?">
+                    What's your favourite food?
                   </MenuItem>
                 </Select>
               </FormControl>
+              <TextField
+                id="outlined-RecoveryQuestionOne-input"
+                label="Recovery QuestionOne"
+                type="text"
+                sx={{ width: 450 }}
+                error={recoveryQuestionOneError}
+                value={recoveryQuestionOne}
+                autoComplete="off"
+                onChange={(e) => {
+                  setrecoveryAnswerOne(e.target.value);
+                  if (e.target.value === "") {
+                    setRecoveryQuestionOneError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setRecoveryQuestionOneError(false);
+                  }
+                }}
+                onBlur={(e) => {
+                  setrecoveryAnswerOne(e.target.value);
+                  if (e.target.value === "") {
+                    setRecoveryQuestionOneError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setRecoveryQuestionOneError(false);
+                  }
+                }}
+                helperText={
+                  recoveryQuestionOneError
+                    ? "Please Enter Your Recovery QuestionOne-Number"
+                    : ""
+                }
+                InputProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "#616a82",
+                  },
+                }}
+              />
+            </div>
+            <div className="rowThree">
+              {" "}
               <FormControl sx={{ width: 450, borderRadius: 18 }}>
                 <InputLabel
                   sx={{ color: "#616a82", fontFamily: "RajdhaniBold" }}
-                  id="demo-language-label"
+                  id="demo-questionTwo-label"
                 >
-                  Language
+                  Security Question 02
                 </InputLabel>
                 <Select
-                  labelId="demo-language-label"
-                  id="demo-language"
-                  value={language}
-                  label="Language"
+                  labelId="demo-questionTwo-label"
+                  id="demo-questionTwo"
+                  value={questionTwo}
+                  label="Security Question 02"
                   sx={{ color: "white", fontFamily: "RajdhaniBold" }}
                   onChange={(e) => {
-                    setLanguage(e.target.value);
+                    setquestionTwo(e.target.value);
                   }}
                 >
-                  <MenuItem selected value="Gujarati">
-                    Gujarati
+                  <MenuItem selected value="What's the name of your pet?">
+                    What's the name of your pet?
                   </MenuItem>
                 </Select>
               </FormControl>
+              <TextField
+                id="outlined-RecoveryQuestionTwo-input"
+                label="Recovery QuestionTwo"
+                type="text"
+                sx={{ width: 450 }}
+                error={recoveryQuestionTwoError}
+                value={recoveryAnswerTwo}
+                autoComplete="off"
+                onChange={(e) => {
+                  setrecoveryAnswerTwo(e.target.value);
+                  if (e.target.value === "") {
+                    setRecoveryQuestionTwoError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setRecoveryQuestionTwoError(false);
+                  }
+                }}
+                onBlur={(e) => {
+                  setrecoveryAnswerTwo(e.target.value);
+                  if (e.target.value === "") {
+                    setRecoveryQuestionTwoError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setRecoveryQuestionTwoError(false);
+                  }
+                }}
+                helperText={
+                  recoveryQuestionTwoError
+                    ? "Please Enter Your Recovery QuestionTwo-Number"
+                    : ""
+                }
+                InputProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "#616a82",
+                  },
+                }}
+              />
             </div>
-            <div className="rowThree"></div>
-            <div className="rowFour"></div>
+            <div className="rowFour">
+              {" "}
+              <FormControl sx={{ width: 450, borderRadius: 18 }}>
+                <InputLabel
+                  sx={{ color: "#616a82", fontFamily: "RajdhaniBold" }}
+                  id="demo-questionThree-label"
+                >
+                  Security Question 03
+                </InputLabel>
+                <Select
+                  labelId="demo-questionThree-label"
+                  id="demo-questionThree"
+                  value={questionThree}
+                  label="Security Question 03"
+                  sx={{ color: "white", fontFamily: "RajdhaniBold" }}
+                  onChange={(e) => {
+                    setquestionThree(e.target.value);
+                  }}
+                >
+                  <MenuItem selected value="What's your favourite Sport?">
+                    What's your favourite Sport?
+                  </MenuItem>
+                </Select>
+              </FormControl>
+              <TextField
+                id="outlined-RecoveryQuestionThree-input"
+                label="Recovery QuestionThree"
+                type="text"
+                sx={{ width: 450 }}
+                error={recoveryQuestionThreeError}
+                value={recoveryAnswerThree}
+                autoComplete="off"
+                onChange={(e) => {
+                  setrecoveryAnswerThree(e.target.value);
+                  if (e.target.value === "") {
+                    setRecoveryQuestionThreeError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setRecoveryQuestionThreeError(false);
+                  }
+                }}
+                onBlur={(e) => {
+                  setrecoveryAnswerThree(e.target.value);
+                  if (e.target.value === "") {
+                    setRecoveryQuestionThreeError(true);
+                  }
+                  if (e.target.value !== "") {
+                    setRecoveryQuestionThreeError(false);
+                  }
+                }}
+                helperText={
+                  recoveryQuestionThreeError
+                    ? "Please Enter Your Recovery Question's Answer"
+                    : ""
+                }
+                InputProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "white",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    fontSize: 15,
+                    fontFamily: "RajdhaniBold",
+                    color: "#616a82",
+                  },
+                }}
+              />
+            </div>
           </div>
         </form>
       </div>

@@ -155,12 +155,18 @@ const ProfileInfo = ({ handleProfileInfo }) => {
               <div className="profileactionsHolder">
                 <p
                   onClick={() => {
-                    navigate("/updateInfo/aboutInfo");
+                    navigate("/updateInfo/accountInfo");
                   }}
                 >
                   Account-Info
                 </p>
-                <p>Change Password</p>
+                <p
+                  onClick={() => {
+                    navigate("/updateInfo/changePassword");
+                  }}
+                >
+                  Change Password
+                </p>
                 <p>Genral Settings</p>
               </div>
             </AccordionDetails>
@@ -262,6 +268,7 @@ const ProfileInfo = ({ handleProfileInfo }) => {
             className="saveBtn"
             onClick={() => {
               handleProfileInfo();
+              navigate("/homePage");
             }}
           >
             Save Changes

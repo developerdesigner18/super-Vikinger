@@ -688,7 +688,7 @@ const SignupPage = () => {
           </div>
         </div>
       </div>
-      <ToastContainer
+      {/* <ToastContainer
         position="bottom-right"
         autoClose={3000}
         hideProgressBar={false}
@@ -698,7 +698,7 @@ const SignupPage = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      />
+      /> */}
     </React.Fragment>
   );
 };

@@ -156,7 +156,7 @@ const NavbarBefore = () => {
           </IconButton>
         </div>
       </div>
-      <ToastContainer
+      {/* <ToastContainer
         position="bottom-right"
         autoClose={3000}
         hideProgressBar={false}
@@ -166,7 +166,7 @@ const NavbarBefore = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      />
+      /> */}
       <Outlet />
 
       <DrawerWidgetBefore

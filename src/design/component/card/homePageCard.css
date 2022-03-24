@@ -151,6 +151,11 @@
     color: white;
   }
 
+  .logos:hover {
+    transform: translateY(-20%);
+    transition: all;
+  }
+
   /* -=--------------------secondcard--------------------- */
 
   .secondCardContainer {

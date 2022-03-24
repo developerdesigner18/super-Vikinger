@@ -48,13 +48,18 @@ const SettingDropdown = () => {
         <div className="linkHolder">
           <a
             onClick={() => {
-              navigate("/updateInfo/aboutInfo");
+              navigate("/updateInfo/accountInfo");
             }}
             className="dropdown-navigation-link"
           >
             Account Info
           </a>
-          <a href="hub-Profile" className="dropdown-navigation-link">
+          <a
+            onClick={() => {
+              navigate("/updateInfo/changePassword");
+            }}
+            className="dropdown-navigation-link"
+          >
             Change Password
           </a>
           <a href="hub-Profile" className="dropdown-navigation-link">

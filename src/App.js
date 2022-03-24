@@ -5,7 +5,7 @@ import NavbarBefore from "./component/navbarBefore";
 import HomePage from "./Pages/homePage";
 import SignupPage from "./Pages/registrationForm";
 import Nomatch from "./Pages/page404";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import NavbarAfter from "./component/navbarAfter";
 import ProfileInfo from "./component/updateDetails/profileInfo";
@@ -13,8 +13,12 @@ import AboutProfile from "./component/updateDetails/aboutProfile";
 import ProfileDetails from "./component/updateDetails/profileDetails";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import ChangePassword from "./component/changePassword";
 
 function App() {
+  const location = useLocation();
+  console.log("location.pathname------------------>", location.pathname);
+  console.log("url-------------->");
   const [token, setToken] = useState("");
   // -------------------profileInfo--------------------------
   const [coverImage, setCoverImage] = useState("");
@@ -26,7 +30,6 @@ function App() {
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
-  const [profileApi, setprofileApi] = useState(true);
 
   // ----------------Account-Info-----------------------------
   const [fullName, setFullName] = useState("");
@@ -35,13 +38,18 @@ function App() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [accountCountry, setAccountCountry] = useState("");
   const [language, setLanguage] = useState("");
-  const [aboutApi, setaboutApi] = useState(false);
+
   // --------------security-------------------
   const [recoveryEmail, setRecoveryEmail] = useState();
   const [recoveryPhone, setRecoveryPhone] = useState();
+  const [questionOne, setquestionOne] = useState();
+  const [questionTwo, setquestionTwo] = useState();
+  const [questionThree, setquestionThree] = useState();
 
-  console.log("profileApi", profileApi);
-  console.log("aboutApi", aboutApi);
+  const [recoveryAnswerOne, setrecoveryAnswerOne] = useState();
+  const [recoveryAnswerTwo, setrecoveryAnswerTwo] = useState();
+  const [recoveryAnswerThree, setrecoveryAnswerThree] = useState();
+
   const handleProfileInfo = () => {
     // ------------------profileData-------------------
     const data = new FormData();
@@ -70,10 +78,18 @@ function App() {
       phoneNumber,
       accountCountry,
       language,
+      recoveryEmail,
+      recoveryPhone,
+      questionOne,
+      recoveryAnswerOne,
+      questionTwo,
+      recoveryAnswerTwo,
+      questionThree,
+      recoveryAnswerThree,
     };
 
     // --------------------Post request--------------------------
-    if (profileApi) {
+    if (location.pathname == "/updateInfo/profileInfo") {
       axios({
         method: "post",
         url: "http://localhost:8080/user/profileInfo",
@@ -91,7 +107,8 @@ function App() {
         .catch((err) => {
           toast.error(err.response.data.message);
         });
-    } else if (aboutApi) {
+    }
+    if (location.pathname == "/updateInfo/accountInfo") {
       axios({
         method: "post",
         url: "http://localhost:8080/user/accountInfo",
@@ -148,12 +165,11 @@ function App() {
                 setCountry={setCountry}
                 city={city}
                 setCity={setCity}
-                setprofileApi={setprofileApi}
               />
             }
           />
           <Route
-            path="aboutInfo"
+            path="accountInfo"
             element={
               <AboutProfile
                 fullName={fullName}
@@ -172,14 +188,36 @@ function App() {
                 setRecoveryEmail={setRecoveryEmail}
                 recoveryPhone={recoveryPhone}
                 setrecoveryPhone={setRecoveryPhone}
-                setaboutApi={setaboutApi}
+                questionOne={questionOne}
+                questionTwo={questionTwo}
+                questionThree={questionThree}
+                setquestionOne={setquestionOne}
+                setquestionTwo={setquestionTwo}
+                setquestionThree={setquestionThree}
+                recoveryAnswerOne={recoveryAnswerOne}
+                recoveryAnswerTwo={recoveryAnswerTwo}
+                recoveryAnswerThree={recoveryAnswerThree}
+                setrecoveryAnswerOne={setrecoveryAnswerOne}
+                setrecoveryAnswerTwo={setrecoveryAnswerTwo}
+                setrecoveryAnswerThree={setrecoveryAnswerThree}
               />
             }
           />
+          <Route path="changePassword" element={<ChangePassword />} />
         </Route>
         <Route path="*" element={<Nomatch />} />
       </Routes>
-      <ToastContainer />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </React.Fragment>
   );
 }
