@@ -31,7 +31,7 @@ const AboutProfile = ({
   setquestionTwo,
   questionThree,
   setquestionThree,
-  recoveryQuestionOne,
+  recoveryAnswerOne,
   recoveryAnswerTwo,
   recoveryAnswerThree,
   setrecoveryAnswerOne,
@@ -53,10 +53,21 @@ const AboutProfile = ({
 
   return (
     <React.Fragment>
-      <p style={{ fontSize: 12, textTransform: "uppercase", color: "#616a82" }}>
+      <p
+        style={{
+          fontSize: 12,
+          textTransform: "uppercase",
+          color: "#616a82",
+          fontFamily: "RajdhaniBold",
+          margin: 0,
+          padding: 0,
+        }}
+      >
         Account
       </p>
-      <h1>Account Info</h1>
+      <h1 style={{ fontFamily: "RajdhaniBold", margin: 0, padding: 0 }}>
+        Account Info
+      </h1>
       <div className="accountPersonalInfoHolder">
         <p style={{ marginBottom: 10 }}>Personal Info</p>
         <form>
@@ -414,7 +425,7 @@ const AboutProfile = ({
                 type="text"
                 sx={{ width: 450 }}
                 error={recoveryQuestionOneError}
-                value={recoveryQuestionOne}
+                value={recoveryAnswerOne}
                 autoComplete="off"
                 onChange={(e) => {
                   setrecoveryAnswerOne(e.target.value);

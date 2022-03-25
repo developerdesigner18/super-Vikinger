@@ -3,7 +3,7 @@ import { Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../design/dropdown-navigation/settingDropdown.css";
 
-const SettingDropdown = () => {
+const SettingDropdown = ({ avatar, profileName, publicEmail }) => {
   const navigate = useNavigate();
   return (
     <div>
@@ -12,13 +12,17 @@ const SettingDropdown = () => {
           <div>
             <div className="iconThree hex" style={{ padding: 3 }}>
               <div className="hex-background">
-                <Image className="icons" src="./Image/Avatar/20.jpg" />
+                <Image
+                  className="icons"
+                  src={avatar}
+                  alt="Please set your avatar-image first!"
+                />
               </div>
             </div>
           </div>
           <div className="profileInfoHolder">
-            <p style={{ fontSize: 14, color: "white" }}>Hi Marina!</p>
-            <p>@marinavalentine</p>
+            <p style={{ fontSize: 14, color: "white" }}>Hi {profileName}!</p>
+            <p>{publicEmail}</p>
           </div>
         </div>
         <p className="dropdown-navigation-category">My Profile</p>

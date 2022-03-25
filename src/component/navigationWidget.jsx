@@ -28,6 +28,10 @@ const DrawerWidget = ({
   theme,
   DrawerHeader,
   draweropen,
+  avatar,
+  fullName,
+  coverImage,
+  email,
 }) => {
   const classes = useStyles();
   return (
@@ -50,17 +54,21 @@ const DrawerWidget = ({
         open={draweropen}
       >
         <DrawerHeader>
-          <div className="drawerBackground">
+          <div
+            className="drawerBackground"
+            style={{ backgroundImage: `url(${coverImage})` }}
+          >
             <Image
-              src="./Image/Drawer/drawerAvatar.png"
+              src={avatar}
               style={{ width: 120, height: 131, zIndex: 1, marginTop: 23 }}
+              alt="Please Set Your Profile Image!"
             />
-            <p style={{ fontSize: 18 }}>Marina Valentine</p>
+            <p style={{ fontSize: 18 }}>{fullName}</p>
             <p
               className="playerLink"
               style={{ fontSize: 11, color: "#9aa4bf" }}
             >
-              WWW.GAMEHUNTRESS.COM
+              {email}
             </p>
             <div className="badgeHolder" style={{ margin: "36px auto 44px" }}>
               <Image src="./Image/Badge/gold-s.png" />

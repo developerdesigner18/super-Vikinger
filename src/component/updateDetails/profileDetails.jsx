@@ -38,7 +38,9 @@ const ProfileDetails = ({
   const [birthdayError, setBirthdayError] = useState(false);
   const imageRef = useRef();
   const coverRef = useRef();
-
+  useEffect(() => {
+    console.log(birthday);
+  }, []);
   //  ------------------All country---------------------
   const handleChange = (event) => {
     const fileObject = event.target.files[0];
@@ -87,9 +89,15 @@ const ProfileDetails = ({
         </p>
         <div className="profileImageHolder">
           <div className="profilePreview">
-            <div className="preview">
-              <img
-                src="./Image/Logo/logo.png"
+            <div
+              className="preview"
+              style={{
+                backgroundImage: `url(${coverImage})`,
+                backgroundSize: "cover",
+              }}
+            >
+              <Image
+                src={file}
                 style={{ width: 75, height: 75, marginTop: 31 }}
               />
             </div>
@@ -382,7 +390,7 @@ const ProfileDetails = ({
               }}
               sx={{ width: 450 }}
               error={birthdayError}
-              defaultValue="25 - 01 - 2001"
+              defaultValue={`${new Date(birthday).toLocaleDateString()}`}
               autoComplete="off"
               onChange={(e) => {
                 setBirthday(e.target.value);
@@ -457,7 +465,7 @@ const ProfileDetails = ({
                 sx={{ color: "#616a82", fontFamily: "RajdhaniBold" }}
                 id="demo-city-label"
               >
-                Country
+                City
               </InputLabel>
               <Select
                 labelId="demo-city-label"

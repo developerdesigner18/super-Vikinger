@@ -41,7 +41,14 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }));
-const NavbarAfter = () => {
+const NavbarAfter = ({
+  fullName,
+  email,
+  avatar,
+  coverImage,
+  profileName,
+  publicEmail,
+}) => {
   const [draweropen, setDrawerOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const anchorRefSetting = React.useRef(null);
@@ -378,7 +385,13 @@ const NavbarAfter = () => {
                         }}
                       >
                         <MenuItem sx={{ p: 0 }} onClick={handleSettingClose}>
-                          {<SettingDropdown />}
+                          {
+                            <SettingDropdown
+                              avatar={avatar}
+                              profileName={profileName}
+                              publicEmail={publicEmail}
+                            />
+                          }
                         </MenuItem>
                         <Button className="logoutBtn">Logout</Button>
                       </MenuList>
@@ -397,6 +410,10 @@ const NavbarAfter = () => {
         theme={theme}
         handleDrawerOpen={handleDrawerOpen}
         handleDrawerClose={handleDrawerClose}
+        fullName={fullName}
+        email={email}
+        avatar={avatar}
+        coverImage={coverImage}
       />
     </React.Fragment>
   );

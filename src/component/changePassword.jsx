@@ -3,6 +3,7 @@ import axios from "axios";
 
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { toast, ToastContainer } from "react-toastify";
 import "../design/UpdatePersonalnfo/changePassword.css";
 const ChangePassword = () => {
   const [currentPasswordError, setcurrentPasswordError] = useState(false);
@@ -11,30 +12,45 @@ const ChangePassword = () => {
   const [cnewPasswordError, setcnewPasswordError] = useState(false);
   const [cnewPassword, setcnewPassword] = useState();
   const [newPassword, setnewPassword] = useState();
-  const [userData, setUserData] = useState([]);
 
-  useEffect(() => {
+  const changePasswordNow = () => {
+    const changePasswordData = {
+      newPassword: newPassword,
+      cnewPassword: cnewPassword,
+      currentPassword: currentPassword,
+    };
     axios({
-      method: "get",
-      url: "http://localhost:8080/user",
+      method: "post",
+      url: "http://localhost:8080/user/changePassword",
+      data: changePasswordData,
       headers: {
         "x-access-token": localStorage.getItem("Token"),
       },
     })
-      .then((response) => {
-        setUserData(response.data[0]);
+      .then(function (response) {
+        //handle success
+        if (response.status === 200) {
+          toast.success("success!");
+        }
       })
       .catch((err) => {
-        console.log("error :", err.response.data);
+        toast.error(err.response.data.message);
       });
-  }, []);
-
+  };
   return (
     <React.Fragment>
-      <p style={{ fontSize: 12, textTransform: "uppercase", color: "#616a82" }}>
+      <p
+        style={{
+          fontSize: 12,
+          textTransform: "uppercase",
+          color: "#616a82",
+          margin: 0,
+          padding: 0,
+        }}
+      >
         Account
       </p>
-      <h1>Change Password</h1>
+      <h1 style={{ margin: 0, padding: 0 }}>Change Password</h1>
       <div className="changePasswordFieldHolder">
         <div className="rowOne">
           <TextField
@@ -172,9 +188,27 @@ const ChangePassword = () => {
         </div>
         <div className="rowThree">
           <Button className="forgotPassword">Forgot Your Password?</Button>
-          <Button className="changePassword">Change Password Now?</Button>
+          <Button
+            className="changePassword"
+            onClick={() => {
+              changePasswordNow();
+            }}
+          >
+            Change Password Now?
+          </Button>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </React.Fragment>
   );
 };
