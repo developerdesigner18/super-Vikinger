@@ -17,6 +17,7 @@ import { makeStyles } from "@mui/styles";
 import "../design/navigation-widget/navigationWidget.scss";
 import { Image } from "react-bootstrap";
 import { IconButton } from "@mui/material";
+import "../design/user-avatar/_user-avatar.scss";
 const drawerWidth = 300;
 const useStyles = makeStyles({
   drawerPaper: {
@@ -56,13 +57,117 @@ const DrawerWidget = ({
         <DrawerHeader>
           <div
             className="drawerBackground"
-            style={{ backgroundImage: `url(${coverImage})` }}
+            style={{
+              backgroundImage: `url(${coverImage})`,
+              textAlign: "center",
+            }}
           >
             <Image
               src={avatar}
               style={{ width: 120, height: 131, zIndex: 1, marginTop: 23 }}
               alt="Please Set Your Profile Image!"
             />
+            {/* <div
+              className="user-shortdescription-avatar user-avatar medium "
+              style={{ margin: "23px auto" }}
+            >
+              <div className="user-avatar-border">
+                <div
+                  className="hexagon-120-132"
+                  id="avatarImageWidget"
+                  style={{
+                    width: 120,
+                    height: 132,
+                    fill: true,
+                    borderColor: "#1d2333",
+                    position: "relative",
+                  }}
+                >
+                  <canvas
+                    height={132}
+                    width={120}
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="user-avatar-content">
+                <div
+                  className="hexagon-image-82-90"
+                  style={{
+                    backgroundImage: `url(${avatar})`,
+                    width: 82,
+                    height: 90,
+                    position: "relative",
+                    borderRadius: 3,
+                    clip: true,
+                  }}
+                >
+                  <canvas
+                    width={82}
+                    height={90}
+                    style={{ position: "absolute", top: 0, left: 0 }}
+                  />
+                </div>
+              </div>
+              <div className="user-avatar-progress">
+                <div
+                  className="hexagon-progress-100-110"
+                  style={{
+                    width: 100,
+                    height: 110,
+                    position: "relative",
+                    scale: "0 1",
+                  }}
+                >
+                  <canvas
+                    width={100}
+                    height={110}
+                    style={{ position: "absolute", top: 0, left: 0 }}
+                  />
+                </div>
+              </div>
+              <div className="user-avatar-progress-border">
+                <div className="hexagon-border-100-110">
+                  <canvas
+                    width={100}
+                    height={110}
+                    style={{ position: "absolute", top: 0, left: 0 }}
+                  />
+                </div>
+              </div>
+              <div className="user-avatar-badge">
+                <div className="user-avatar-badge-border">
+                  <div
+                    className="hexagon-32-36"
+                    style={{ width: 32, height: 36, position: "relative" }}
+                  >
+                    {" "}
+                    <canvas
+                      width={32}
+                      height={36}
+                      style={{ position: "absolute", top: 0, left: 0 }}
+                    />
+                  </div>
+                </div>
+                <div className="user-avatar-badge-content">
+                  <div
+                    className="hexagon-dark-26-28"
+                    style={{ width: 26, height: 28, position: "relative" }}
+                  >
+                    <canvas
+                      width={26}
+                      height={28}
+                      style={{ position: "absolute", top: 0, left: 0 }}
+                    />
+                  </div>
+                </div>
+                <p className="user-avatar-badge-text">24</p>
+              </div>
+            </div> */}
             <p style={{ fontSize: 18 }}>{fullName}</p>
             <p
               className="playerLink"

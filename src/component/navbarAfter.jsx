@@ -48,6 +48,7 @@ const NavbarAfter = ({
   coverImage,
   profileName,
   publicEmail,
+  power,
 }) => {
   const [draweropen, setDrawerOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -243,11 +244,11 @@ const NavbarAfter = ({
                 fontSize: 12,
               }}
             >
-              39:EXP
+              {power}:EXP
             </p>
           </div>
           <div className="progressBarStripe">
-            <LinearProgress variant="determinate" value={38} />
+            <LinearProgress variant="determinate" value={power} />
           </div>
         </div>
         <Divider

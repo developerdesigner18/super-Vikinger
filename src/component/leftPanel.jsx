@@ -17,12 +17,12 @@ const LeftPanel = () => {
     <React.Fragment>
       <div className="leftPanelHolder" style={{ display: "flex" }}>
         <div className="leftPanel">
-          <div className="icon1 hex" style={{ padding: 0 }}>
+          {/* <div className="icon1 hex" style={{ padding: 0 }}>
             <div className="hex-background">
               <Image className="icons" src="./Image/Avatar/17.jpg" />
             </div>
-          </div>
-          {/* <div className="icon1" style={{ padding: 0 }}>
+          </div> */}
+          <div className="icon1" style={{ padding: 0 }}>
             <div className="user-avatar small no-outline online">
               <div className="user-avatar-content">
                 <div
@@ -91,7 +91,7 @@ const LeftPanel = () => {
                 <p className="user-avatar-badge-text">24</p>
               </div>
             </div>
-          </div> */}
+          </div>
           <div className="icon2" style={{ padding: 0 }}>
             <IconButton
               className="iconHolder"

@@ -37,6 +37,24 @@ const ChangePassword = () => {
         toast.error(err.response.data.message);
       });
   };
+  const forgotPassword = () => {
+    axios({
+      method: "post",
+      url: "http://localhost:8080/user/forgotPassword",
+      headers: {
+        "x-access-token": localStorage.getItem("Token"),
+      },
+    })
+      .then(function (response) {
+        //handle success
+        if (response.status === 200) {
+          toast.success("success!");
+        }
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  };
   return (
     <React.Fragment>
       <p
@@ -187,7 +205,14 @@ const ChangePassword = () => {
           />
         </div>
         <div className="rowThree">
-          <Button className="forgotPassword">Forgot Your Password?</Button>
+          <Button
+            className="forgotPassword"
+            onClick={() => {
+              forgotPassword();
+            }}
+          >
+            Forgot Your Password?
+          </Button>
           <Button
             className="changePassword"
             onClick={() => {

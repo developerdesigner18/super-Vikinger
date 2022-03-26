@@ -420,3 +420,30 @@ $fs-253: (253 / $base-size) * 1rem;
     }
   }
 }
+// ------------------hexagon----------------
+.hexagon-image-82-90 {
+  width: 82px;
+  height: 90px;
+  clip: auto;
+  border-radius: 3px;
+  // roundedCorners: true;
+  // roundedCornerRadius: 3;
+}
+.hexagon-120-132 {
+  width: 120px;
+  height: 132px;
+  fill: true;
+  outline-color: #1d2333;
+}
+.hexagon-progress-100-110 {
+  width: 100px;
+  height: 110px;
+  outline-width: 6px;
+  scale: 0 1;
+}
+.hexagon-border-100-110 {
+  width: 100px;
+  height: 110px;
+  outline-width: 6px;
+  outline-color: #293249;
+}

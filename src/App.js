@@ -181,6 +181,8 @@ function App() {
     setrecoveryAnswerThree(
       userData?.securityInfo[0]?.questionThree.answerThree
     );
+    setPower(userData?.power);
+    setDefense(userData?.defense);
   }, [userData]);
   return (
     <React.Fragment>
@@ -196,6 +198,8 @@ function App() {
                 coverImage={coverImage}
                 publicEmail={publicEmail}
                 profileName={profileName}
+                power={power}
+                defense={defense}
               />
             ) : (
               <NavbarBefore />
