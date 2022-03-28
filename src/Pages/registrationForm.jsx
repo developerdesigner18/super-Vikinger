@@ -9,6 +9,7 @@ import {
   Divider,
   FormControl,
   InputLabel,
+  Modal,
   OutlinedInput,
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
@@ -29,7 +30,9 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import Backdrop from "@mui/material/Backdrop";
 import { useNavigate } from "react-router-dom";
+import ForgotPasswordHomePage from "./forgotPasswordHomepage";
 const SignupPage = () => {
   const navigate = useNavigate();
   const [values, setValues] = React.useState({
@@ -53,6 +56,9 @@ const SignupPage = () => {
   const [loginData, setLoginData] = useState("");
 
   const [alignment, setAlignment] = React.useState("register");
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const handleToggleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
@@ -634,7 +640,7 @@ const SignupPage = () => {
               </div>
               <div className="forGotPasswrod">
                 <a
-                  onClick={() => navigate("/56564")}
+                  onClick={handleOpen}
                   style={{
                     fontFamily: "RajdhaniBold",
                     color: "darkgray",
@@ -699,6 +705,19 @@ const SignupPage = () => {
         draggable
         pauseOnHover
       /> */}
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <ForgotPasswordHomePage setOpen={setOpen} />
+      </Modal>
     </React.Fragment>
   );
 };

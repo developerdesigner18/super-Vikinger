@@ -15,6 +15,8 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import ChangePassword from "./component/changePassword";
 import { format } from "date-fns";
+import ForgotPassword from "./Pages/forgotPassword";
+import ResetPassword from "./Pages/resetPassword";
 
 function App() {
   const location = useLocation();
@@ -208,7 +210,7 @@ function App() {
         >
           <Route path="homepage" element={<HomePage />} />
         </Route>
-
+        <Route path="/resetPassword" element={<ResetPassword />} />
         <Route
           path="updateInfo"
           element={<ProfileInfo handleProfileInfo={handleProfileInfo} />}
@@ -274,6 +276,10 @@ function App() {
             }
           />
           <Route path="changePassword" element={<ChangePassword />} />
+          <Route
+            path="forgotPassword/:userId"
+            element={<ForgotPassword userId={userData?._id} />}
+          />
         </Route>
         <Route path="*" element={<Nomatch />} />
       </Routes>
