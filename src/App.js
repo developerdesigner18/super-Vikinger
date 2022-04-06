@@ -250,82 +250,80 @@ function App() {
           />
         </Route>
         <Route path="/updatePassword/:userId" element={<ResetPassword />} />
-        <Route
-          path="updateInfo"
-          element={
-            <ProtectedRoute token={localStorage.getItem("Token")}>
-              <ProfileInfo handleProfileInfo={handleProfileInfo} />
-            </ProtectedRoute>
-          }
-        >
+        {localStorage.getItem("Token") && (
           <Route
-            path="profileInfo"
-            element={
-              <ProfileDetails
-                coverImage={coverImage}
-                setCoverImage={setCoverImage}
-                file={file}
-                setFile={setFile}
-                profileName={profileName}
-                setProfileName={setProfileName}
-                publicEmail={publicEmail}
-                setPublicEmail={setPublicEmail}
-                description={description}
-                setDescription={setDescription}
-                birthday={birthday}
-                setBirthday={setBirthday}
-                gender={gender}
-                setGender={setGender}
-                country={country}
-                setCountry={setCountry}
-                setStateName={setStateName}
-                stateName={stateName}
-                city={city}
-                setCity={setCity}
-              />
-            }
-          />
-          <Route
-            path="accountInfo"
-            element={
-              <AboutProfile
-                fullName={fullName}
-                setFullName={setFullName}
-                accountEmail={accountEmail}
-                setAccountEmail={setAccountEmail}
-                urlUserName={urlUserName}
-                setUrlUserName={setUrlUserName}
-                phoneNumber={phoneNumber}
-                setPhoneNumber={setPhoneNumber}
-                accountCountry={accountCountry}
-                setAccountCountry={setAccountCountry}
-                language={language}
-                setLanguage={setLanguage}
-                recoveryEmail={recoveryEmail}
-                setRecoveryEmail={setRecoveryEmail}
-                recoveryPhone={recoveryPhone}
-                setrecoveryPhone={setRecoveryPhone}
-                questionOne={questionOne}
-                questionTwo={questionTwo}
-                questionThree={questionThree}
-                setquestionOne={setquestionOne}
-                setquestionTwo={setquestionTwo}
-                setquestionThree={setquestionThree}
-                recoveryAnswerOne={recoveryAnswerOne}
-                recoveryAnswerTwo={recoveryAnswerTwo}
-                recoveryAnswerThree={recoveryAnswerThree}
-                setrecoveryAnswerOne={setrecoveryAnswerOne}
-                setrecoveryAnswerTwo={setrecoveryAnswerTwo}
-                setrecoveryAnswerThree={setrecoveryAnswerThree}
-              />
-            }
-          />
-          <Route path="changePassword" element={<ChangePassword />} />
-          <Route
-            path="forgotPassword/:userId"
-            element={<ForgotPassword userId={userData?._id} />}
-          />
-        </Route>
+            path="updateInfo"
+            element={<ProfileInfo handleProfileInfo={handleProfileInfo} />}
+          >
+            <Route
+              path="profileInfo"
+              element={
+                <ProfileDetails
+                  coverImage={coverImage}
+                  setCoverImage={setCoverImage}
+                  file={file}
+                  setFile={setFile}
+                  profileName={profileName}
+                  setProfileName={setProfileName}
+                  publicEmail={publicEmail}
+                  setPublicEmail={setPublicEmail}
+                  description={description}
+                  setDescription={setDescription}
+                  birthday={birthday}
+                  setBirthday={setBirthday}
+                  gender={gender}
+                  setGender={setGender}
+                  country={country}
+                  setCountry={setCountry}
+                  setStateName={setStateName}
+                  stateName={stateName}
+                  city={city}
+                  setCity={setCity}
+                />
+              }
+            />
+            <Route
+              path="accountInfo"
+              element={
+                <AboutProfile
+                  fullName={fullName}
+                  setFullName={setFullName}
+                  accountEmail={accountEmail}
+                  setAccountEmail={setAccountEmail}
+                  urlUserName={urlUserName}
+                  setUrlUserName={setUrlUserName}
+                  phoneNumber={phoneNumber}
+                  setPhoneNumber={setPhoneNumber}
+                  accountCountry={accountCountry}
+                  setAccountCountry={setAccountCountry}
+                  language={language}
+                  setLanguage={setLanguage}
+                  recoveryEmail={recoveryEmail}
+                  setRecoveryEmail={setRecoveryEmail}
+                  recoveryPhone={recoveryPhone}
+                  setrecoveryPhone={setRecoveryPhone}
+                  questionOne={questionOne}
+                  questionTwo={questionTwo}
+                  questionThree={questionThree}
+                  setquestionOne={setquestionOne}
+                  setquestionTwo={setquestionTwo}
+                  setquestionThree={setquestionThree}
+                  recoveryAnswerOne={recoveryAnswerOne}
+                  recoveryAnswerTwo={recoveryAnswerTwo}
+                  recoveryAnswerThree={recoveryAnswerThree}
+                  setrecoveryAnswerOne={setrecoveryAnswerOne}
+                  setrecoveryAnswerTwo={setrecoveryAnswerTwo}
+                  setrecoveryAnswerThree={setrecoveryAnswerThree}
+                />
+              }
+            />
+            <Route path="changePassword" element={<ChangePassword />} />
+            <Route
+              path="forgotPassword/:userId"
+              element={<ForgotPassword userId={userData?._id} />}
+            />
+          </Route>
+        )}
         <Route path="*" element={<Nomatch />} />
       </Routes>
       <ToastContainer
