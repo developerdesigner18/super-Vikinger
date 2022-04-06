@@ -64,6 +64,7 @@ const NavbarBefore = () => {
             toast.success("success!");
           }
           console.log(response);
+          localStorage.setItem("Token", JSON.stringify(response.data.token));
           setEmail("");
           setPwd("");
         })

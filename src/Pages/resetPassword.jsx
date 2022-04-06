@@ -1,18 +1,25 @@
 import { TextField } from "@mui/material";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { toast } from "react-toastify";
 import "../design/forgotPassoword/resetPassword.css";
+import { useLocation } from "react-router-dom";
 const ResetPassword = () => {
   const [newPassword, setnewPassword] = useState();
   const [cnewPassword, setcnewPassword] = useState();
   const [newPasswordError, setnewPasswordError] = useState(false);
   const [cnewPasswordError, setcnewPasswordError] = useState();
+  const [userId, setUserId] = useState("");
+  const location = useLocation();
+  useEffect(() => {
+    setUserId(location.pathname.slice(16));
+  }, [location]);
   const updatePasswordNow = () => {
     const updatetedPassword = {
       newPassword,
       cnewPassword,
+      userId,
     };
     if (newPassword !== cnewPassword) {
       setcnewPasswordError(true);

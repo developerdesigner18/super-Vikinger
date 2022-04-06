@@ -101,6 +101,18 @@
   flex-direction: row;
   margin: 20px auto 50px;
 }
+/* input:-webkit-autofill {
+  font-family: RajdhaniBold !important;
+  background-color: transparent !important;
+  color: #fff !important;
+} */
+input:-webkit-autofill {
+  -webkit-text-fill-color: black !important;
+}
+
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: black !important;
+}
 @media (min-width: 481px) and (max-width: 800px) {
   .signUpPage {
     height: 100vh;

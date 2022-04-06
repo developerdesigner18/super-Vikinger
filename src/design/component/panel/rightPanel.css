@@ -13,6 +13,7 @@
     top: 0;
     padding-bottom: 6px;
     height: 100vh;
+    overflow: hidden scroll !important;
   }
   .icons {
     width: 35px;

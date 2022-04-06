@@ -18,7 +18,7 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import DrawerWidget from "../component/navigationWidget";
 import "../design/component/navbar/navbarAfter.css";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 import {
   Divider,
@@ -50,6 +50,7 @@ const NavbarAfter = ({
   publicEmail,
   power,
 }) => {
+  const navigate = useNavigate();
   const [draweropen, setDrawerOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const anchorRefSetting = React.useRef(null);
@@ -218,7 +219,7 @@ const NavbarAfter = ({
           </ul>
         </div>
         <div className="navbarSearchBar">
-          <form autoComplete="off">
+          <form autoComplete="off" id="searchBar">
             <input
               type="search"
               placeholder="Search heros for people and groups"
@@ -332,7 +333,7 @@ const NavbarAfter = ({
                       placement === "bottom-start"
                         ? "center top"
                         : "left bottom",
-                    borderRadius: 9,
+                    borderRadius: 8,
                   }}
                 >
                   <Paper
@@ -340,7 +341,8 @@ const NavbarAfter = ({
                       mr: 3,
                       mt: 0,
                       width: 220,
-                      height: 614,
+                      height: "90vh",
+                      borderRadius: "8px !important",
                       overflow: "scroll",
                     }}
                   >
@@ -371,6 +373,7 @@ const NavbarAfter = ({
                               width: 10,
                               height: 10,
                               bgcolor: "background.paper",
+                              borderRadius: 8,
                               transform: "translateY(-50%) rotate(45deg)",
                               zIndex: 0,
                             },
@@ -394,7 +397,15 @@ const NavbarAfter = ({
                             />
                           }
                         </MenuItem>
-                        <Button className="logoutBtn">Logout</Button>
+                        <Button
+                          className="logoutBtn"
+                          onClick={() => {
+                            localStorage.removeItem("Token");
+                            navigate("/");
+                          }}
+                        >
+                          Logout
+                        </Button>
                       </MenuList>
                     </ClickAwayListener>
                   </Paper>

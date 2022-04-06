@@ -107,7 +107,7 @@ const HomePageMainCard = () => {
             </div>
             <div className="logoFour logos">
               <i
-                class="fa-brands fa-twitch"
+                className="fa-brands fa-twitch"
                 style={{ width: 20, height: 14 }}
               ></i>
             </div>
@@ -116,13 +116,13 @@ const HomePageMainCard = () => {
             </div>
             <div className="logoSix logos">
               <i
-                class="fa-brands fa-patreon"
+                className="fa-brands fa-patreon"
                 style={{ width: 20, height: 14 }}
               ></i>
             </div>
             <div className="logoSeven logos">
               <i
-                class="fa-brands fa-discord"
+                className="fa-brands fa-discord"
                 style={{ width: 20, height: 14 }}
               ></i>
             </div>

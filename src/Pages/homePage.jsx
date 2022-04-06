@@ -1,10 +1,11 @@
 import { Navigation } from "@mui/icons-material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import HomePageMainCard from "../component/homePageCard";
 import LeftPanel from "../component/leftPanel";
 
 import RightPanel from "../component/rightPanel";
+
 const HomePage = () => {
   return (
     <React.Fragment>

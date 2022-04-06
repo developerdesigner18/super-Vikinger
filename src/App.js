@@ -5,7 +5,7 @@ import NavbarBefore from "./component/navbarBefore";
 import HomePage from "./Pages/homePage";
 import SignupPage from "./Pages/registrationForm";
 import Nomatch from "./Pages/page404";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import NavbarAfter from "./component/navbarAfter";
 import ProfileInfo from "./component/updateDetails/profileInfo";
@@ -17,12 +17,17 @@ import ChangePassword from "./component/changePassword";
 import { format } from "date-fns";
 import ForgotPassword from "./Pages/forgotPassword";
 import ResetPassword from "./Pages/resetPassword";
+// ---------------useAuth------------------
 
 function App() {
   const location = useLocation();
-  console.log("location.pathname------------------>", location.pathname);
-  console.log("url-------------->");
+  // ------------for private routing---------------
+  //  --------------------------------------
+  // console.log("location.pathname------------------>", location.pathname);
+  // console.log("url-------------->");
+
   const [token, setToken] = useState("");
+  const [authed, setAuthed] = useState(null);
   // -------------------profileInfo--------------------------
   const [coverImage, setCoverImage] = useState("");
   const [file, setFile] = useState("");
@@ -32,6 +37,7 @@ function App() {
   const [birthday, setBirthday] = useState();
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
+  const [stateName, setStateName] = useState("");
   const [city, setCity] = useState("");
   const [power, setPower] = useState("");
   const [defense, setDefense] = useState("");
@@ -67,6 +73,7 @@ function App() {
     data.append("gender", gender);
     data.append("country", country);
     data.append("city", city);
+    data.append("state", stateName);
     console.log("ProfileInformation------------------>", data);
     //  ---------------------aboutProfileData------------------
     // const aboutData = new FormData();
@@ -132,13 +139,15 @@ function App() {
         });
     }
   };
-  useEffect(() => {
-    setToken(localStorage.getItem("Token"));
-  }, []);
-  console.log("token------------------->", token);
+
+  // console.log("token------------------->", token);
 
   // ---------------get api for-userData--------------------------------
   const [userData, setUserData] = useState();
+
+  useEffect(() => {
+    console.log("profile name : ", profileName);
+  }, [profileName]);
 
   useEffect(() => {
     fetchApiData();
@@ -152,10 +161,10 @@ function App() {
   useEffect(() => {
     const date = new Date(userData?.birthdate).toLocaleDateString();
 
-    console.log(
-      "userData--------------->",
-      userData?.securityInfo[0]?.answerOne
-    );
+    // console.log(
+    //   "userData--------------->",
+    //   userData?.securityInfo[0]?.answerOne
+    // );
     setFile(userData?.avatar);
     setCoverImage(userData?.coverImage);
     setProfileName(userData?.profileName);
@@ -166,6 +175,7 @@ function App() {
     setPower(userData?.power);
     setGender(userData?.gender);
     setCountry(userData?.country);
+    setStateName(userData?.state);
     setCity(userData?.city);
     setFullName(userData?.fullName);
     setAccountEmail(userData?.email);
@@ -186,13 +196,35 @@ function App() {
     setPower(userData?.power);
     setDefense(userData?.defense);
   }, [userData]);
+
+  const ProtectedRoute = ({ token, children }) => {
+    if (!token) {
+      return <Navigate to="/" replace />;
+    }
+
+    return children;
+  };
+  const ProtectedRouteRegister = ({ token, children }) => {
+    if (token) {
+      return <Navigate to="/homepage" replace />;
+    }
+
+    return children;
+  };
   return (
     <React.Fragment>
       <Routes>
-        <Route path="/" element={<SignupPage />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRouteRegister token={localStorage.getItem("Token")}>
+              <SignupPage setAuthed={setAuthed} />
+            </ProtectedRouteRegister>
+          }
+        />
         <Route
           element={
-            token ? (
+            localStorage.getItem("Token") ? (
               <NavbarAfter
                 fullName={fullName}
                 email={userData?.email}
@@ -208,12 +240,23 @@ function App() {
             )
           }
         >
-          <Route path="homepage" element={<HomePage />} />
+          <Route
+            path="homepage"
+            element={
+              <ProtectedRoute token={localStorage.getItem("Token")}>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
         </Route>
-        <Route path="/resetPassword" element={<ResetPassword />} />
+        <Route path="/updatePassword/:userId" element={<ResetPassword />} />
         <Route
           path="updateInfo"
-          element={<ProfileInfo handleProfileInfo={handleProfileInfo} />}
+          element={
+            <ProtectedRoute token={localStorage.getItem("Token")}>
+              <ProfileInfo handleProfileInfo={handleProfileInfo} />
+            </ProtectedRoute>
+          }
         >
           <Route
             path="profileInfo"
@@ -235,6 +278,8 @@ function App() {
                 setGender={setGender}
                 country={country}
                 setCountry={setCountry}
+                setStateName={setStateName}
+                stateName={stateName}
                 city={city}
                 setCity={setCity}
               />

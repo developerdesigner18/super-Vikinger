@@ -33,11 +33,13 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Backdrop from "@mui/material/Backdrop";
 import { useNavigate } from "react-router-dom";
 import ForgotPasswordHomePage from "./forgotPasswordHomepage";
-const SignupPage = () => {
+
+const SignupPage = ({ setAuthed }) => {
+  // for the protected routing-----------------------
+
   const navigate = useNavigate();
   const [values, setValues] = React.useState({
     password: "",
-
     showPassword: false,
   });
   const [email, setEmail] = useState("");
@@ -125,7 +127,6 @@ const SignupPage = () => {
   };
 
   const handleLoginSubmit = (event) => {
-    console.log("click");
     event.preventDefault();
     if (emailUserName && pwdLogin && rememberMe) {
       const loginData = {
@@ -138,6 +139,9 @@ const SignupPage = () => {
           console.log("loginResponse----------------->", response.data.token);
           localStorage.setItem("Token", JSON.stringify(response.data.token));
           navigate("/homepage");
+          // setAuthed(localStorage.getItem("Token"));
+          // login().then(() => {
+          // });
         })
         .catch((err) => {
           console.log("err : ", err.response.data);
@@ -672,7 +676,7 @@ const SignupPage = () => {
             </Button>
           </Box>
           <div className="loginFooter">
-            <div class="separator">Login With Your Social Account</div>
+            <div className="separator">Login With Your Social Account</div>
             <div className="logosFooter">
               <div className="logoOne logos">
                 <FacebookIcon />
@@ -683,7 +687,7 @@ const SignupPage = () => {
 
               <div className="logoFour logos">
                 <i
-                  class="fa-brands fa-twitch"
+                  className="fa-brands fa-twitch"
                   style={{ width: 20, height: 14 }}
                 ></i>
               </div>

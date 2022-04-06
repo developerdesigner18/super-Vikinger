@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { IconButton, TextField } from "@mui/material";
-
+import { Country, State, City } from "country-state-city";
 import("screw-filereader");
 
 const ProfileDetails = ({
@@ -17,6 +17,8 @@ const ProfileDetails = ({
   setCity,
   city,
   setCountry,
+  stateName,
+  setStateName,
   country,
   setCoverImage,
   coverImage,
@@ -36,11 +38,44 @@ const ProfileDetails = ({
   const [publicEmailError, setPublicEmailError] = useState(false);
   const [descriptionError, setDescriptionError] = useState(false);
   const [birthdayError, setBirthdayError] = useState(false);
+  const [birthdayDate, setBirthdayDate] = useState();
+  const [countryName, setCountryName] = useState([]);
+  const [cityName, setCityName] = useState([]);
+  const [stateNameLocal, setStateNameLocal] = useState([]);
+  const [countryCode, setCountryCode] = useState();
+  const [stateCode, setstateCode] = useState();
   const imageRef = useRef();
   const coverRef = useRef();
+
   useEffect(() => {
-    console.log(birthday);
+    birthday && setBirthdayDate(new Date(birthday).toISOString().slice(0, 10));
+  }, [birthday]);
+  useEffect(() => {
+    setCountryName(Country.getAllCountries().map((data) => data));
   }, []);
+
+  useEffect(() => {
+    const code = Country.getAllCountries().filter(
+      (data) => data.name === country
+    );
+
+    code[0]?.isoCode && setCountryCode(code[0].isoCode);
+
+    setStateNameLocal(
+      State.getStatesOfCountry(code[0]?.isoCode).map((data) => data)
+    );
+
+    const codeState = State.getAllStates().filter(
+      (data) => data.name === stateName
+    );
+
+    setCityName(
+      City.getCitiesOfState(code[0]?.isoCode, codeState[0]?.isoCode).map(
+        (data) => data
+      )
+    );
+  }, [countryName]);
+
   //  ------------------All country---------------------
   const handleChange = (event) => {
     const fileObject = event.target.files[0];
@@ -67,7 +102,6 @@ const ProfileDetails = ({
 
   return (
     <div className="ProfileDetailsHolder">
-      {/* {setprofileApi(true)} */}
       <div className="profileDetailsHeader">
         <p
           style={{
@@ -390,7 +424,7 @@ const ProfileDetails = ({
               }}
               sx={{ width: 450 }}
               error={birthdayError}
-              defaultValue={`${new Date(birthday).toLocaleDateString()}`}
+              value={birthdayDate}
               autoComplete="off"
               onChange={(e) => {
                 setBirthday(e.target.value);
@@ -429,38 +463,119 @@ const ProfileDetails = ({
                 }}
                 sx={{ color: "white", fontFamily: "RajdhaniBold" }}
               >
-                <MenuItem selected value="male">
+                <MenuItem
+                  selected
+                  value="male"
+                  sx={{
+                    fontFamily: "RajdhaniBold",
+
+                    backgroundColor: "#1d2333",
+                  }}
+                >
                   Male
                 </MenuItem>
-                <MenuItem value="female">Female</MenuItem>
-                <MenuItem value="other">Other</MenuItem>
+                <MenuItem
+                  sx={{
+                    fontFamily: "RajdhaniBold",
+
+                    backgroundColor: "#1d2333",
+                  }}
+                  value="female"
+                >
+                  Female
+                </MenuItem>
+                <MenuItem
+                  sx={{
+                    fontFamily: "RajdhaniBold",
+
+                    backgroundColor: "#1d2333",
+                  }}
+                  value="other"
+                >
+                  Other
+                </MenuItem>
               </Select>
             </FormControl>
           </div>
           <div className="rowFour">
-            <FormControl sx={{ width: 450, borderRadius: 18 }}>
+            <FormControl sx={{ width: 300, borderRadius: 18 }}>
               <InputLabel
                 sx={{ color: "#616a82", fontFamily: "RajdhaniBold" }}
                 id="demo-country-label"
               >
                 Country
               </InputLabel>
+              {country ? (
+                <Select
+                  labelId="demo-country-label"
+                  id="demo-country"
+                  value={country}
+                  label="Country"
+                  sx={{ color: "white", fontFamily: "RajdhaniBold" }}
+                  onChange={(e) => {
+                    setCountry(e.target.value);
+                  }}
+                >
+                  {countryName?.map((data, index) => {
+                    return (
+                      <MenuItem
+                        key={index}
+                        selected
+                        sx={{
+                          fontFamily: "RajdhaniBold",
+
+                          backgroundColor: "#1d2333",
+                        }}
+                        value={data.name}
+                      >
+                        {data.name}
+                        {/* {setCountryCode(data.countryCode)} */}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              ) : (
+                <Select value={"loading"} placeholder="Loading...">
+                  <MenuItem value="loading">Loading....</MenuItem>
+                </Select>
+              )}
+            </FormControl>
+            <FormControl sx={{ width: 300, borderRadius: 18 }}>
+              <InputLabel
+                sx={{ color: "#616a82", fontFamily: "RajdhaniBold" }}
+                id="demo-city-label"
+              >
+                State
+              </InputLabel>
               <Select
-                labelId="demo-country-label"
-                id="demo-country"
-                value={country}
-                label="Country"
+                labelId="demo-state-label"
+                id="demo-state"
+                defaultValue={stateName}
+                label="state"
                 sx={{ color: "white", fontFamily: "RajdhaniBold" }}
                 onChange={(e) => {
-                  setCountry(e.target.value);
+                  setStateName(e.target.value);
                 }}
               >
-                <MenuItem selected value="India">
-                  India
-                </MenuItem>
+                {stateNameLocal?.map((data, index) => {
+                  return (
+                    <MenuItem
+                      key={index}
+                      selected
+                      sx={{
+                        fontFamily: "RajdhaniBold",
+
+                        backgroundColor: "#1d2333",
+                      }}
+                      value={data.name}
+                    >
+                      {data.name}
+                    </MenuItem>
+                  );
+                })}
               </Select>
             </FormControl>
-            <FormControl sx={{ width: 450, borderRadius: 18 }}>
+            <FormControl sx={{ width: 300, borderRadius: 18 }}>
               <InputLabel
                 sx={{ color: "#616a82", fontFamily: "RajdhaniBold" }}
                 id="demo-city-label"
@@ -470,16 +585,29 @@ const ProfileDetails = ({
               <Select
                 labelId="demo-city-label"
                 id="demo-city"
-                value={city}
+                defaultValue={city}
                 label="city"
                 sx={{ color: "white", fontFamily: "RajdhaniBold" }}
                 onChange={(e) => {
                   setCity(e.target.value);
                 }}
               >
-                <MenuItem selected value="Surat">
-                  Surat
-                </MenuItem>
+                {cityName?.map((data, index) => {
+                  return (
+                    <MenuItem
+                      key={index}
+                      sx={{
+                        fontFamily: "RajdhaniBold",
+
+                        backgroundColor: "#1d2333",
+                      }}
+                      selected
+                      value={data.name}
+                    >
+                      {data.name}
+                    </MenuItem>
+                  );
+                })}
               </Select>
             </FormControl>
           </div>

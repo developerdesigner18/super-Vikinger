@@ -71,7 +71,7 @@
     padding: 12px 14px;
     width: 100%;
   }
-  form {
+  #searchBar {
     background-color: #5538b5;
     display: flex;
     flex-direction: row;
