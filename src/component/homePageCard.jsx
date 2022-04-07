@@ -64,10 +64,6 @@ const HomePageMainCard = () => {
       <Card className="text-center firstCardContainer">
         <Card.Header>
           <div className="headerImage">
-            {/* <div className="hexLogo">
-            <div className="hex-background-Logo">
-            </div>
-          </div> */}
             <Image className="logo" src="./Image/logo/Logo.png" />
           </div>
         </Card.Header>

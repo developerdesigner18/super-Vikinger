@@ -64,7 +64,7 @@ const ProfileDetails = ({
     setStateNameLocal(
       State.getStatesOfCountry(code[0]?.isoCode).map((data) => data)
     );
-
+    console.log("stateNameLocal", stateNameLocal);
     const codeState = State.getAllStates().filter(
       (data) => data.name === stateName
     );
@@ -74,8 +74,9 @@ const ProfileDetails = ({
         (data) => data
       )
     );
-  }, [countryName]);
+  }, [country, stateName]);
 
+  // console.log("stateName:", stateName);
   //  ------------------All country---------------------
   const handleChange = (event) => {
     const fileObject = event.target.files[0];
@@ -505,40 +506,35 @@ const ProfileDetails = ({
               >
                 Country
               </InputLabel>
-              {country ? (
-                <Select
-                  labelId="demo-country-label"
-                  id="demo-country"
-                  value={country}
-                  label="Country"
-                  sx={{ color: "white", fontFamily: "RajdhaniBold" }}
-                  onChange={(e) => {
-                    setCountry(e.target.value);
-                  }}
-                >
-                  {countryName?.map((data, index) => {
-                    return (
-                      <MenuItem
-                        key={index}
-                        selected
-                        sx={{
-                          fontFamily: "RajdhaniBold",
 
-                          backgroundColor: "#1d2333",
-                        }}
-                        value={data.name}
-                      >
-                        {data.name}
-                        {/* {setCountryCode(data.countryCode)} */}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              ) : (
-                <Select value={"loading"} placeholder="Loading...">
-                  <MenuItem value="loading">Loading....</MenuItem>
-                </Select>
-              )}
+              <Select
+                labelId="demo-country-label"
+                id="demo-country"
+                value={country}
+                label="Country"
+                sx={{ color: "white", fontFamily: "RajdhaniBold" }}
+                onChange={(e) => {
+                  setCountry(e.target.value);
+                }}
+              >
+                {countryName?.map((data, index) => {
+                  return (
+                    <MenuItem
+                      key={index}
+                      selected
+                      sx={{
+                        fontFamily: "RajdhaniBold",
+
+                        backgroundColor: "#1d2333",
+                      }}
+                      value={data.name}
+                    >
+                      {data.name}
+                      {/* {setCountryCode(data.countryCode)} */}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
             </FormControl>
             <FormControl sx={{ width: 300, borderRadius: 18 }}>
               <InputLabel
@@ -547,11 +543,11 @@ const ProfileDetails = ({
               >
                 State
               </InputLabel>
-
+              {console.log("stateName", stateName)}
               <Select
                 labelId="demo-state-label"
                 id="demo-state"
-                defaultValue={stateName}
+                value={stateName}
                 label="state"
                 sx={{ color: "white", fontFamily: "RajdhaniBold" }}
                 onChange={(e) => {
@@ -583,10 +579,11 @@ const ProfileDetails = ({
               >
                 City
               </InputLabel>
+
               <Select
                 labelId="demo-city-label"
                 id="demo-city"
-                defaultValue={city}
+                value={city}
                 label="city"
                 sx={{ color: "white", fontFamily: "RajdhaniBold" }}
                 onChange={(e) => {

@@ -136,11 +136,7 @@ const NavbarAfter = ({
     <React.Fragment>
       <div className="navbarAfter">
         <div className="navbarLogo" style={{ marginLeft: 0 }}>
-          <Image
-            src="./Image/logo/vikinger-logo.png"
-            style={{ width: 80, height: 80 }}
-            fluid
-          />
+          <Image src="./Image/logo/vikinger-logo.png" fluid />
         </div>
         <div className="navbarMenu">
           <IconButton
@@ -253,6 +249,7 @@ const NavbarAfter = ({
           </div>
         </div>
         <Divider
+          className="dividerNavabarAfter"
           orientation="vertical"
           variant="middle"
           flexItem
@@ -293,6 +290,7 @@ const NavbarAfter = ({
           </IconButton>
         </div>
         <Divider
+          className="dividerNavabarAfter"
           orientation="vertical"
           variant="middle"
           flexItem

@@ -5,7 +5,8 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Country, State, City } from "country-state-city";
 
 import "../../design/UpdatePersonalnfo/aboutProfile.css";
 const AboutProfile = ({
@@ -50,7 +51,11 @@ const AboutProfile = ({
     useState(false);
   const [recoveryQuestionThreeError, setRecoveryQuestionThreeError] =
     useState(false);
+  const [countryName, setCountryName] = useState([]);
 
+  useEffect(() => {
+    setCountryName(Country.getAllCountries().map((data) => data));
+  }, []);
   return (
     <React.Fragment>
       <p
@@ -268,9 +273,21 @@ const AboutProfile = ({
                     setAccountCountry(e.target.value);
                   }}
                 >
-                  <MenuItem selected value="India">
-                    India
-                  </MenuItem>
+                  {countryName?.map((data, index) => {
+                    return (
+                      <MenuItem
+                        key={index}
+                        selected
+                        sx={{
+                          fontFamily: "RajdhaniBold",
+                          backgroundColor: "#1d2333",
+                        }}
+                        value={data.name}
+                      >
+                        {data.name}
+                      </MenuItem>
+                    );
+                  })}
                 </Select>
               </FormControl>
               <FormControl sx={{ width: 450, borderRadius: 18 }}>
@@ -290,8 +307,8 @@ const AboutProfile = ({
                     setLanguage(e.target.value);
                   }}
                 >
-                  <MenuItem selected value="Gujarati">
-                    Gujarati
+                  <MenuItem selected value="English">
+                    English
                   </MenuItem>
                 </Select>
               </FormControl>

@@ -19,6 +19,13 @@
     width: 35px;
     height: 35px;
   }
+  .icons :hover {
+    background-color: #253653;
+    /* border: 1 px solid #a1a3aa; */
+    border-radius: 8px;
+    border-width: 30px;
+    z-index: 1;
+  }
   #imageProfile01 {
     background-image: url("../../../../public/Image/Avatar/03.jpg");
     background-size: contain;

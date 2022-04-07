@@ -146,10 +146,6 @@ function App() {
   const [userData, setUserData] = useState();
 
   useEffect(() => {
-    console.log("profile name : ", profileName);
-  }, [profileName]);
-
-  useEffect(() => {
     fetchApiData();
   }, []);
   const fetchApiData = async () => {

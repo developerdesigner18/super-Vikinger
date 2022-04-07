@@ -10,7 +10,7 @@ const SettingDropdown = ({ avatar, profileName, publicEmail }) => {
       <div className="dropdownSetting">
         <div className="dropdown-navigation-header">
           <div>
-            <div className="iconThree hex" style={{ padding: 3 }}>
+            {/* <div className="iconThree hex" style={{ padding: 3 }}>
               <div className="hex-background">
                 <Image
                   className="icons"
@@ -18,7 +18,14 @@ const SettingDropdown = ({ avatar, profileName, publicEmail }) => {
                   alt="Please set your avatar-image first!"
                 />
               </div>
-            </div>
+            </div> */}
+            {/* <div class="hexagon" id="hexagon">
+               <Image
+                className="icons"
+                src={avatar}
+                alt="Please set your avatar-image first!"
+              /> 
+            </div> */}
           </div>
           <div className="profileInfoHolder">
             <p style={{ fontSize: 14, color: "white" }}>Hi {profileName}!</p>
