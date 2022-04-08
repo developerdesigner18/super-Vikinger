@@ -17,6 +17,7 @@ import ChangePassword from "./component/changePassword";
 import { format } from "date-fns";
 import ForgotPassword from "./Pages/forgotPassword";
 import ResetPassword from "./Pages/resetPassword";
+import Loader from "./Pages/loader";
 // ---------------useAuth------------------
 
 function App() {
@@ -26,8 +27,9 @@ function App() {
   // console.log("location.pathname------------------>", location.pathname);
   // console.log("url-------------->");
 
-  const [token, setToken] = useState("");
   const [authed, setAuthed] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   // -------------------profileInfo--------------------------
   const [coverImage, setCoverImage] = useState("");
   const [file, setFile] = useState("");
@@ -153,7 +155,11 @@ function App() {
       headers: { "x-access-token": localStorage.getItem("Token") },
     });
     setUserData(response.data?.data[0]);
+    setLoading(false);
   };
+  useEffect(() => {
+    console.log("Loading--------------", loading);
+  }, [loading]);
   useEffect(() => {
     const date = new Date(userData?.birthdate).toLocaleDateString();
 
@@ -240,7 +246,7 @@ function App() {
             path="homepage"
             element={
               <ProtectedRoute token={localStorage.getItem("Token")}>
-                <HomePage />
+                {loading ? <Loader /> : <HomePage />}
               </ProtectedRoute>
             }
           />
@@ -254,63 +260,71 @@ function App() {
             <Route
               path="profileInfo"
               element={
-                <ProfileDetails
-                  coverImage={coverImage}
-                  setCoverImage={setCoverImage}
-                  file={file}
-                  setFile={setFile}
-                  profileName={profileName}
-                  setProfileName={setProfileName}
-                  publicEmail={publicEmail}
-                  setPublicEmail={setPublicEmail}
-                  description={description}
-                  setDescription={setDescription}
-                  birthday={birthday}
-                  setBirthday={setBirthday}
-                  gender={gender}
-                  setGender={setGender}
-                  country={country}
-                  setCountry={setCountry}
-                  setStateName={setStateName}
-                  stateName={stateName}
-                  city={city}
-                  setCity={setCity}
-                />
+                loading ? (
+                  <Loader />
+                ) : (
+                  <ProfileDetails
+                    coverImage={coverImage}
+                    setCoverImage={setCoverImage}
+                    file={file}
+                    setFile={setFile}
+                    profileName={profileName}
+                    setProfileName={setProfileName}
+                    publicEmail={publicEmail}
+                    setPublicEmail={setPublicEmail}
+                    description={description}
+                    setDescription={setDescription}
+                    birthday={birthday}
+                    setBirthday={setBirthday}
+                    gender={gender}
+                    setGender={setGender}
+                    country={country}
+                    setCountry={setCountry}
+                    setStateName={setStateName}
+                    stateName={stateName}
+                    city={city}
+                    setCity={setCity}
+                  />
+                )
               }
             />
             <Route
               path="accountInfo"
               element={
-                <AboutProfile
-                  fullName={fullName}
-                  setFullName={setFullName}
-                  accountEmail={accountEmail}
-                  setAccountEmail={setAccountEmail}
-                  urlUserName={urlUserName}
-                  setUrlUserName={setUrlUserName}
-                  phoneNumber={phoneNumber}
-                  setPhoneNumber={setPhoneNumber}
-                  accountCountry={accountCountry}
-                  setAccountCountry={setAccountCountry}
-                  language={language}
-                  setLanguage={setLanguage}
-                  recoveryEmail={recoveryEmail}
-                  setRecoveryEmail={setRecoveryEmail}
-                  recoveryPhone={recoveryPhone}
-                  setrecoveryPhone={setRecoveryPhone}
-                  questionOne={questionOne}
-                  questionTwo={questionTwo}
-                  questionThree={questionThree}
-                  setquestionOne={setquestionOne}
-                  setquestionTwo={setquestionTwo}
-                  setquestionThree={setquestionThree}
-                  recoveryAnswerOne={recoveryAnswerOne}
-                  recoveryAnswerTwo={recoveryAnswerTwo}
-                  recoveryAnswerThree={recoveryAnswerThree}
-                  setrecoveryAnswerOne={setrecoveryAnswerOne}
-                  setrecoveryAnswerTwo={setrecoveryAnswerTwo}
-                  setrecoveryAnswerThree={setrecoveryAnswerThree}
-                />
+                loading ? (
+                  <Loader />
+                ) : (
+                  <AboutProfile
+                    fullName={fullName}
+                    setFullName={setFullName}
+                    accountEmail={accountEmail}
+                    setAccountEmail={setAccountEmail}
+                    urlUserName={urlUserName}
+                    setUrlUserName={setUrlUserName}
+                    phoneNumber={phoneNumber}
+                    setPhoneNumber={setPhoneNumber}
+                    accountCountry={accountCountry}
+                    setAccountCountry={setAccountCountry}
+                    language={language}
+                    setLanguage={setLanguage}
+                    recoveryEmail={recoveryEmail}
+                    setRecoveryEmail={setRecoveryEmail}
+                    recoveryPhone={recoveryPhone}
+                    setrecoveryPhone={setRecoveryPhone}
+                    questionOne={questionOne}
+                    questionTwo={questionTwo}
+                    questionThree={questionThree}
+                    setquestionOne={setquestionOne}
+                    setquestionTwo={setquestionTwo}
+                    setquestionThree={setquestionThree}
+                    recoveryAnswerOne={recoveryAnswerOne}
+                    recoveryAnswerTwo={recoveryAnswerTwo}
+                    recoveryAnswerThree={recoveryAnswerThree}
+                    setrecoveryAnswerOne={setrecoveryAnswerOne}
+                    setrecoveryAnswerTwo={setrecoveryAnswerTwo}
+                    setrecoveryAnswerThree={setrecoveryAnswerThree}
+                  />
+                )
               }
             />
             <Route path="changePassword" element={<ChangePassword />} />

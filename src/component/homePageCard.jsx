@@ -92,36 +92,64 @@ const HomePageMainCard = () => {
             WWW.CRYPTORPG.CO
           </p>
           <div className="SocialMediaHolder">
-            <div className="logoOne logos">
+            <a
+              className="logoOne logos"
+              href="https://www.facebook.com/"
+              target={"_blank"}
+            >
               <FacebookIcon />
-            </div>
-            <div className="logoTwo logos">
+            </a>
+            <a
+              className="logoTwo logos"
+              href="https://twitter.com/"
+              target={"_blank"}
+            >
               <TwitterIcon />
-            </div>
-            <div className="logoThree logos">
+            </a>
+            <a
+              className="logoThree logos"
+              href="https://www.instagram.com/"
+              target={"_blank"}
+            >
               <InstagramIcon />
-            </div>
-            <div className="logoFour logos">
+            </a>
+            <a
+              className="logoFour logos"
+              href="https://www.twitch.tv/"
+              target={"_blank"}
+            >
               <i
                 className="fa-brands fa-twitch"
                 style={{ width: 20, height: 14 }}
               ></i>
-            </div>
-            <div className="logoFive logos">
+            </a>
+            <a
+              className="logoFive logos"
+              href="https://www.youtube.com/"
+              target={"_blank"}
+            >
               <YouTubeIcon />
-            </div>
-            <div className="logoSix logos">
+            </a>
+            <a
+              className="logoSix logos"
+              href="https://www.patreon.com/"
+              target={"_blank"}
+            >
               <i
                 className="fa-brands fa-patreon"
                 style={{ width: 20, height: 14 }}
               ></i>
-            </div>
-            <div className="logoSeven logos">
+            </a>
+            <a
+              className="logoSeven logos"
+              href="https://discord.com/"
+              target={"_blank"}
+            >
               <i
                 className="fa-brands fa-discord"
                 style={{ width: 20, height: 14 }}
               ></i>
-            </div>
+            </a>
           </div>
           <Card.Text>
             <div className="infoHolder">

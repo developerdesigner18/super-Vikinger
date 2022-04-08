@@ -92,83 +92,83 @@ const LeftPanel = () => {
               </div>
             </div>
           </div>
-          <div className="icon2" style={{ padding: 0 }}>
+          <div className="icon2" style={{ padding: "5px", zIndex: 1 }}>
             <IconButton
               className="iconHolder"
-              sx={{ color: "#616A80", padding: 0 }}
+              sx={{ color: "#616A80", padding: "5px", zIndex: 1 }}
               aria-label="Monitor"
               title="NewsFeed"
             >
               <MonitorIcon />
             </IconButton>
           </div>
-          <div className="icon3" style={{ padding: 0 }}>
+          <div className="icon3" style={{ padding: "5px", zIndex: 1 }}>
             <IconButton
               className="iconHolder"
               aria-label="Overview"
               title="OverView"
-              sx={{ color: "#616A80", padding: 0 }}
+              sx={{ color: "#616A80", padding: "5px", zIndex: 1 }}
             >
               <BarChartIcon />
             </IconButton>
           </div>
-          <div className="icon4" style={{ padding: 0 }}>
+          <div className="icon4" style={{ padding: "5px", zIndex: 1 }}>
             <IconButton
               className="iconHolder"
               title="Groups"
-              sx={{ color: "#616A80", padding: 0 }}
+              sx={{ color: "#616A80", padding: "5px", zIndex: 1 }}
               aria-label="Groups"
             >
               <GroupsOutlinedIcon />
             </IconButton>
           </div>
-          <div className="icon5" style={{ padding: 0 }}>
+          <div className="icon5" style={{ padding: "5px", zIndex: 1 }}>
             <IconButton
               className="iconHolder"
               title="Members"
-              sx={{ color: "#616A80", padding: 0 }}
+              sx={{ color: "#616A80", padding: "5px", zIndex: 1 }}
               aria-label="Members"
             >
               <PersonOutlineOutlinedIcon />
             </IconButton>
           </div>
-          <div className="icon6" style={{ padding: 0 }}>
+          <div className="icon6" style={{ padding: "5px", zIndex: 1 }}>
             <IconButton
               className="iconHolder"
               title="Badges"
-              sx={{ color: "#616A80", padding: 0 }}
+              sx={{ color: "#616A80", padding: "5px", zIndex: 1 }}
               aria-label="Badges"
             >
               <WorkspacePremiumIcon />
             </IconButton>
           </div>
-          <div className="icon7" style={{ padding: 0 }}>
+          <div className="icon7" style={{ padding: "5px", zIndex: 1 }}>
             <IconButton
               className="iconHolder"
               title="Quests"
-              sx={{ color: "#616A80", padding: 0 }}
+              sx={{ color: "#616A80", padding: "5px", zIndex: 1 }}
               aria-label="Quests"
             >
               <StarOutlineIcon />
             </IconButton>
           </div>
-          <div className="icon8" style={{ padding: 0 }}>
+          <div className="icon8" style={{ padding: "5px", zIndex: 1 }}>
             {" "}
             <IconButton
               className="iconHolder"
               title="Live-Tv"
-              sx={{ color: "#616A80", padding: 0 }}
+              sx={{ color: "#616A80", padding: "5px", zIndex: 1 }}
               aria-label="Live-Tv"
             >
               <LiveTvIcon />
             </IconButton>
           </div>
-          <div className="icon9" style={{ padding: 0 }}>
+          <div className="icon9" style={{ padding: "5px", zIndex: 1 }}>
             {" "}
             <IconButton
               title="Reminder"
               className="iconHolder"
-              sx={{ color: "#616A80", padding: 0 }}
+              sx={{ color: "#616A80", padding: "5px", zIndex: 1 }}
               aria-label="Reminder"
             >
               <EventNoteIcon />

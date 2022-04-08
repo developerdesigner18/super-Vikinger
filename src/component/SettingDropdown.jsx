@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../design/dropdown-navigation/settingDropdown.css";
-
+import HexagonalProgressbar from "react-hexagonal-progressbar";
 const SettingDropdown = ({ avatar, profileName, publicEmail }) => {
   const navigate = useNavigate();
   return (
@@ -19,6 +19,14 @@ const SettingDropdown = ({ avatar, profileName, publicEmail }) => {
                 />
               </div>
             </div> */}
+            <HexagonalProgressbar
+              value={60}
+              lineCap="line|round"
+              color="#00FF00"
+              level={5}
+              badgeImg={avatar}
+              location="rightBottom"
+            />
             {/* <div class="hexagon" id="hexagon">
                <Image
                 className="icons"

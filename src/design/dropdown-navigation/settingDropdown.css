@@ -42,39 +42,75 @@
   float: right;
   color: black;
 }
-.hexagon {
-  top: 30vh;
-  left: 40%;
-  position: absolute;
+._3c0HdLfzeVGL-3dzZoYhZ0 {
+  width: 100% !important;
+  height: 100% !important;
+  /* transform: rotate(30deg); */
+}
+._3c0HdLfzeVGL-3dzZoYhZ0 image {
+  object-fit: cover;
+  width: 86%;
+  height: 93%;
+  x: 61;
+  y: 26;
+  clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+  -webkit-clip-path: polygon(0% 50%, 25% 0%, 73% 0%, 97% 50%, 76% 94%, 24% 94%);
+}
+._1tq45zolpZHPesL_Up-IDP {
+  color: #f1f1f1;
+  font-family: "RajdhaniBold";
+  font-size: 10rem !important;
+  background-color: #40d04f !important;
+}
+
+/* .headerIcon .hex {
+  display: block;
   margin: 0 auto;
-  background-color: dodgerblue;
-  border-radius: 10px;
-  width: 100px;
-  height: 63px;
+  position: relative;
+  width: 39px;
+  height: 39px;
+  background: black;
   box-sizing: border-box;
-  transition: all 1s;
-  border: 0.4vh solid transparent;
+  -webkit-clip-path: polygon(
+    0% 50%,
+    25% 0%,
+    75% 0%,
+    100% 50%,
+    75% 100%,
+    25% 100%
+  );
+  -moz-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
 }
-
-/* Creating pseudo-class */
-.hexagon:before,
-.hexagon:after {
-  content: "";
-  border: inherit;
+.headerIcon .hex .hex-background {
+  transform: rotate(90);
   position: absolute;
-  top: -0.5vh;
-  left: -0.5vh;
-  background-color: dodgerblue;
-  border-radius: inherit;
-  height: 100%;
+  background-color: orange;
+  top: 2px;
+  left: 2px;
+  width: 35px;
+  height: 35px;
+  -webkit-clip-path: polygon(
+    0% 50%,
+    25% 0%,
+    75% 0%,
+    100% 50%,
+    75% 100%,
+    25% 100%
+  );
+  -moz-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+}
+.headerIcon .hex Image {
+  position: absolute;
   width: 100%;
-}
-
-/* Align them in such a way
-        that they form a hexagon */
-.hexagon:before {
-  transform: rotate(60deg);
-}
-.hexagon:after {
-  transform: rotate(-60deg);
-}
+  height: 100%;
+  object-fit: cover;
+  -webkit-clip-path: polygon(
+    0% 50%,
+    25% 0%,
+    75% 0%,
+    100% 50%,
+    75% 100%,
+    25% 100%
+  );
+  -moz-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+} */
